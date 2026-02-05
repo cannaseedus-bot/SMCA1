@@ -85,6 +85,120 @@ The system is complete in architecture; the remaining pieces are implementation 
 
 None of these alter the design; they simply make it runnable.
 
+## 0.1 Normative Invariants (Wormhole Laws)
+
+These invariants are **locked** and define the Tiered Control Plane as a normative specification.
+
+### Wormhole Law 1 — Layer Orthogonality (LOCKED)
+
+No layer may assume availability, correctness, or continuity of any other layer.
+
+```text
+∀ layer_i, layer_j where i ≠ j:
+layer_i correctness ⟂ layer_j availability
+```
+
+Consequences:
+- DNS compromise ≠ runtime compromise.
+- WebSocket drop ≠ state loss.
+- Proof failure ≠ sync failure.
+
+### Wormhole Law 2 — Capability Before Authority (LOCKED)
+
+Authority is never assumed; it is **discovered and negotiated**.
+
+```text
+authority := f(discovery.capabilities ∩ client.capabilities)
+```
+
+Consequences:
+- No hardcoded endpoints.
+- No protocol ossification.
+- No “default trust” failures.
+
+### Wormhole Law 3 — Runtime Is Ephemeral (LOCKED)
+
+Layer 3 (WebSocket) is **never authoritative**.
+
+```text
+runtime_state ⊆ transient
+authoritative_state ∈ sync_layer OR proof_layer
+```
+
+Consequences:
+- Live collaboration can drop at any moment.
+- Recovery always flows from Layer 2 + Layer 4.
+- No split-brain runtime disasters.
+
+### Wormhole Law 4 — Proof Is Asynchronous and Non-Blocking (LOCKED)
+
+SCXQ2 never blocks progress.
+
+```text
+verification ∈ background
+failure ⇒ invalidate, not halt
+```
+
+Consequences:
+- UX never stalls waiting for proof.
+- Proof governs **acceptance**, not **delivery**.
+- High-throughput systems stay usable.
+
+## 0.2 Explicit Binding to π-LM, Object Server, Adapter v1
+
+### π Is a Semantic Runtime (Not a Transport)
+
+π lives **above** all four layers and consumes geometry, not packets.
+
+```text
+DNS / HTTP / WS / SCXQ2
+        ↓
+    object://
+        ↓
+     π-GCCP
+```
+
+Therefore:
+- DNS discovers **where geometry can come from**.
+- HTTP syncs **geometry stores**.
+- WebSocket streams **geometry deltas**.
+- SCXQ2 proves **geometry integrity**.
+- π interprets **geometry collapse**.
+
+π never sees sockets, headers, auth tokens, or compression. It sees angles, magnitudes, topology, and phase.
+
+### Adapter v1 Fits Cleanly (No Special Cases)
+
+Each backend (GGUF / ONNX / WASM / WebGPU) plugs in **below Layer 3**. All adapters emit the same envelope:
+
+```json
+{
+  "@type": "pi.signal.v1",
+  "geometry": { }
+}
+```
+
+Transport does not matter:
+
+| Backend    | Where it plugs                  |
+| ---------- | ------------------------------- |
+| GGUF       | Local → Runtime WS or HTTP Sync |
+| ONNX       | Local or Remote → Runtime WS    |
+| WASM       | Browser → Runtime WS            |
+| WebGPU     | Browser → Runtime WS            |
+| Batch jobs | HTTP Sync                       |
+| Archives   | HTTP + SCXQ2                    |
+
+No adapter knows DNS, WebDAV, WebSocket framing, or proof formats. They emit geometry. Full stop.
+
+### object:// Is the Semantic Boundary
+
+Below object:// → networking, transport, auth, proof.  
+At object:// → governed objects.  
+Above object:// → π collapse, reasoning, retrieval.
+
+This guarantees protocol agility: QUIC, BLE, IPFS, or sneakernet can change without affecting π or the Object Server.
+
 ## 1. Four-Layer Wormhole Stack
 
 ```asxr
