@@ -161,13 +161,15 @@ The causal-state extension defines stepwise validation, causal integrity, and no
 
 ## π-Adapter Interface (Invariant Seam)
 
-All model sources plug into the same seam and emit the same canonical geometry signal. The pipeline does not branch on model type, training source, or runtime location.
+Everything plugs into one seam and emits one canonical signal shape. The pipeline does not branch on model type, training source, or runtime location.
 
 ```
 SignalEmitter → π-Adapter → SVG-Tensor → π-GCCP → object://retrieve/semantic.v1
 ```
 
 ### Canonical Adapter Output (Normative)
+
+Every adapter emits this shape (conceptually), and nothing upstream depends on logits, embeddings, or framework metadata.
 
 ```json
 {
@@ -185,6 +187,10 @@ SignalEmitter → π-Adapter → SVG-Tensor → π-GCCP → object://retrieve/se
 }
 ```
 
+### Why This Works
+
+π-GCCP consumes angles, distances, phase differences, and interference. Those geometric primitives are independent of model type, so any numeric source that can emit angles can participate.
+
 ### Plug-in Matrix (No Special Cases)
 
 | Source | What it emits | Adapter job | Result |
@@ -198,12 +204,12 @@ SignalEmitter → π-Adapter → SVG-Tensor → π-GCCP → object://retrieve/se
 
 * **GGUF** maps rank deltas to angular offsets, entropy to magnitude, and token identity to phase anchors without exposing token IDs upstream.
 * **ONNX** projects numeric tensors onto unit-circle phase pairs, with norms driving magnitudes.
-* **WebGPU** operates only on geometry buffers for projection and π-GCCP math, not model semantics.
-* **WASM** can participate as long as it emits the canonical geometry signal shape.
+* **WebGPU** is a kernel backend here, accelerating projection and π-GCCP math over geometry buffers.
+* **WASM** is the universal escape hatch: if it can compute angles, it can emit the canonical signal.
 
 ### Retrieval Stability
 
-Once converted, π-GCCP consumes only angles, distances, phase differences, and interference. Retrieval is blind to model origin and runtime, and remains stable across CPU and GPU implementations.
+Once converted, π-GCCP consumes only geometry. Retrieval is blind to model origin and runtime, and remains stable across CPU and GPU implementations (exact-math mirrors keep results deterministic).
 
 ## SCXQ7 vs SCXQ2
 

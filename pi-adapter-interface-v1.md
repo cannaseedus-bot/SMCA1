@@ -91,6 +91,93 @@ If this is violated, the adapter is **non-conformant**.
 
 ---
 
+## 1.5 Model Adapter Positioning (Normative)
+
+Adapters are **signal normalizers**, not model integrations. Every external model is treated as a
+signal emitter that must be normalized into π-geometry before any profile logic or GCCP kernels run.
+
+```text
+[ External Model ]
+        ↓
+[ Adapter → pi.signal.v1 ]
+        ↓
+[ π-Profile Vectorizer ]
+        ↓
+[ SVG-Tensor Geometry ]
+        ↓
+[ π-GCCP Kernels (WebGPU / CPU) ]
+        ↓
+[ object://retrieve/semantic.v1 ]
+```
+
+### Required Adapter Emissions
+
+Every adapter **MUST** emit the canonical π-signal geometry primitives only:
+
+* angles
+* magnitudes
+* phases (expressed as angles)
+* topological relations (paths)
+* confidence envelopes (expressed as magnitudes + epsilon)
+
+Adapters may use any internal math, but the output **MUST** satisfy the canonical output object and
+determinism law. π-GCCP never inspects model type or training origin; it only consumes geometry.
+
+---
+
+## 1.6 Standardization Targets (Normative)
+
+π-GCCP does **not** standardize models. It standardizes geometry contracts and interpretation
+rules. Conformance is defined by the following locked targets:
+
+1. **Adapter output schema**
+   * Canonical primitives only (`angles`, `magnitudes`, `paths`, `epsilon`).
+   * Deterministic mapping rules for each adapter.
+   * Declared error bounds or tolerance (`epsilon`) for emitted geometry.
+2. **π-Profile authoring rules**
+   * Weighting and decay are profile-level concerns, not adapter concerns.
+   * Interference logic is applied only after signal emission.
+3. **SVG-Tensor canonicalization**
+   * Identical geometry must hash identically.
+   * Identical input to a conformant adapter must yield identical retrieval inputs.
+4. **Object Server contracts**
+   * Retrieval interfaces are **model-agnostic** and consume geometry only.
+
+Any adapter that emits geometry but violates these targets is **non-conformant**.
+
+---
+
+## 1.7 Adapter Mapping Examples (Non-Normative)
+
+These examples illustrate lawful signal normalization patterns. All mappings terminate in the
+canonical output object and do not leak model-specific representations.
+
+### LLM Logits Adapter
+
+* logits → ranked deltas
+* deltas → angular deviations
+* entropy → magnitude scaling
+
+### Embedding Adapter (GGUF / SBERT / OpenAI)
+
+* vector → unit-circle projection
+* cosine similarity → angular proximity
+* norm → confidence weight
+
+### N-gram Adapter
+
+* frequency → angular density
+* overlap → interference potential
+* rarity → phase shift
+
+### Vision / Audio / Multimodal Adapter
+
+* features → spectral bands
+* bands → phase stacks
+* stacks → superposed geometry
+
+---
+
 # 2. WGSL Reference Kernels (Angle + Interference)
 
 These kernels implement **π-GCCP math only**.
