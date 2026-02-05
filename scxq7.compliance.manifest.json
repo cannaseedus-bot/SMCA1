@@ -14,7 +14,8 @@
     "execution_domain_boundaries",
     "object_autonomy",
     "compression_as_substrate",
-    "projection_powerlessness"
+    "projection_powerlessness",
+    "no_implicit_transition"
   ],
   "verifier": {
     "name": "scxq7-verify",
@@ -31,7 +32,8 @@
     "external_authority_absence",
     "persistence_legality",
     "compression_substrate",
-    "projection_powerlessness"
+    "projection_powerlessness",
+    "no_implicit_transition"
   ],
   "host_contract": {
     "must": [
