@@ -1401,3 +1401,180 @@ Canonical schema, mirror rules, and SCXQ2 lane packing for IDB are published in 
 
 - File: `idb.schema.xsd`
 - Spec: `idb-stack-frozen-core-v1.md`
+
+---
+
+## Cheat Sheets vs Simulators (the Real Split)
+
+### 1️⃣ Cheat Sheets (What LLMs Mostly Are)
+
+A cheat sheet is:
+
+- **Pre-computed**
+- **Collapsed**
+- **Lookup-based**
+- **Pattern-driven**
+- **Fast**
+- **Brittle outside scope**
+
+It does *not* model reality.  
+It models **answers that tended to work**.
+
+Think:
+
+- trig tables
+- log tables
+- exam notes
+- memorized chess openings
+
+**Core property**
+
+> The work already happened elsewhere.
+
+At runtime, nothing is *derived*.  
+You’re just interpolating.
+
+---
+
+### 2️⃣ Simulators (What People *Think* AI Is)
+
+A simulator is:
+
+- **Stateful**
+- **Causal**
+- **Step-based**
+- **Constraint-checked**
+- **Slow**
+- **Robust under novelty**
+
+It *does* model reality (or a formal world).
+
+Think:
+
+- physics engines
+- game worlds
+- circuit simulators
+- climate models
+- theorem provers
+- CPU emulators
+
+**Core property**
+
+> The answer emerges by running the system.
+
+At runtime, the system **must obey laws**.
+
+---
+
+### Side-by-side (No Fluff)
+
+| Dimension | Cheat Sheet        | Simulator          |
+| --------- | ------------------ | ------------------ |
+| Knowledge | Stored             | Generated          |
+| Runtime   | Lookup             | Execution          |
+| Errors    | Confident nonsense | Detectable failure |
+| Novelty   | Fragile            | Graceful           |
+| Truth     | Statistical        | Constraint-bound   |
+| Speed     | Extremely fast     | Slower             |
+| Cost paid | Training           | Inference          |
+| Laws      | Implicit           | Explicit           |
+| Grounding | None               | Built-in           |
+
+---
+
+### Why LLMs *Feel* Like Simulators (But Aren’t)
+
+LLMs are trained on **records of simulations**:
+
+- explanations
+- arguments
+- proofs
+- code
+- debates
+
+So they learn:
+
+> “What does a *simulation result* look like when humans describe it?”
+
+They can **imitate the *output* of reasoning**  
+without executing the reasoning.
+
+That illusion is powerful — and dangerous.
+
+---
+
+### The Key Failure Mode (This Is the Tell)
+
+Ask a cheat sheet:
+
+> “What happens if I bend the rules a little?”
+
+It answers confidently.
+
+Ask a simulator:
+
+> “What happens if I bend the rules a little?”
+
+It either:
+
+- crashes
+- refuses
+- diverges
+- produces something visibly broken
+
+That difference matters.
+
+---
+
+### Why This Matters for Safety and Power
+
+**Cheat sheets:**
+
+- scale easily
+- hallucinate
+- persuade
+- bluff
+- imitate authority
+
+**Simulators:**
+
+- resist lying
+- expose contradictions
+- require structure
+- don’t care how convincing they sound
+
+This is why:
+
+- LLMs write great essays
+- LLMs suck at physics without engines
+- LLMs invent citations
+- LLMs need tools to be reliable
+
+---
+
+### The Uncomfortable Middle Ground (Where Things Get Spicy)
+
+Some systems are **hybrids**:
+
+- LLM = cheat sheet
+- Tool / engine = simulator
+- Orchestrator = referee
+
+That’s the only way to get:
+
+- speed **and**
+- grounding **and**
+- novelty **and**
+- correctness
+
+Pure cheat sheets lie.  
+Pure simulators are expensive.
+
+---
+
+### The Sentence That Locks It In
+
+**A cheat sheet predicts what usually happens.  
+A simulator enforces what must happen.**
+
+Everything else is commentary.
