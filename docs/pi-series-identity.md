@@ -31,72 +31,67 @@ S = \sum_{k=1}^\infty k\,a_k.
 
 ---
 
-## 2) A generating-function route
+## 2) The arcsin footprint (via a beta integral)
 
-Start from the classical power series for \(\arcsin x\):
+The central binomial coefficient is linked to the beta function:
 \[
-\arcsin x = \sum_{k=0}^\infty \frac{(2k)!}{4^k (k!)^2 (2k+1)} x^{2k+1}.
+\mathrm{B}(k+1,k+1) = \int_0^1 t^k(1-t)^k\,dt
+  = \frac{(k!)^2}{(2k+1)!}.
 \]
-Invert the binomial coefficient by noting
+Therefore
 \[
-\frac{(k!)^2}{(2k)!} = \frac{1}{\binom{2k}{k}},
+\frac{(k!)^2}{(2k)!} = (2k+1)\,\mathrm{B}(k+1,k+1)
+  = (2k+1)\int_0^1 t^k(1-t)^k\,dt,
 \]
-so we can rewrite the coefficients in terms of \(\binom{2k}{k}^{-1}\).
+and the summand becomes
+\[
+a_k = 2^k(2k+1)\int_0^1 t^k(1-t)^k\,dt.
+\]
 
-Define a helper function
+Let \(r = 2t(1-t)\in[0,1/2]\). Then
 \[
-F(x) = \sum_{k=0}^\infty \frac{2^k}{\binom{2k}{k}} x^{2k+1}.
+a_k = (2k+1)\int_0^1 r^k\,dt.
 \]
-By comparing coefficients with the \(\arcsin\) series, one obtains
+Summing termwise gives a clean baseline series:
 \[
-F(x) = \frac{x}{2} \left(\frac{\arcsin x}{x} + \sqrt{1-x^2}\right).
+\sum_{k=0}^\infty a_k
+= \int_0^1 \sum_{k=0}^\infty (2k+1) r^k\,dt
+= \int_0^1 \frac{1+r}{(1-r)^2}\,dt
+= 2 + \frac{\pi}{2}.
 \]
-(This equivalence can be checked by expanding both sides as power series.)
+The \(\pi\) enters through the standard arctan term that appears after the shift
+\(t=\tfrac12+u\) (since \(r=\tfrac12-2u^2\)).
 
 ---
 
 ## 3) Extracting the \(k\)-weight
 
-We want \(\sum k a_k\). Differentiate the generating function:
+With the same \(r=2t(1-t)\), the weighted sum is
 \[
-F(x) = \sum_{k=0}^\infty a_k x^{2k+1}
-\quad\Rightarrow\quad
-F'(x) = \sum_{k=0}^\infty (2k+1) a_k x^{2k}.
+S=\sum_{k=1}^\infty k\,a_k
+= \int_0^1 \sum_{k=1}^\infty k(2k+1) r^k\,dt.
 \]
-Then
+The geometric identities
 \[
-\sum_{k=1}^\infty k a_k
-= \frac{1}{2}\left(\sum_{k=0}^\infty (2k+1) a_k - \sum_{k=0}^\infty a_k\right).
-\]
-So it is enough to evaluate the two sums
-\[
-A = \sum_{k=0}^\infty a_k,\qquad
-B = \sum_{k=0}^\infty (2k+1) a_k.
-\]
-These are given by the endpoint values of \(F\) and \(F'\):
-\[
-A = \lim_{x\to 1^-} \frac{F(x)}{x},
+\sum_{k=1}^\infty k r^k = \frac{r}{(1-r)^2},
 \qquad
-B = \lim_{x\to 1^-} F'(x).
+\sum_{k=1}^\infty k^2 r^k = \frac{r(1+r)}{(1-r)^3}
 \]
-Using the closed form for \(F(x)\) above and taking the limit \(x\to 1^-\):
+give
 \[
-F(1) = \frac{1}{2}\left(\arcsin 1 + 0\right) = \frac{\pi}{4},
+\sum_{k=1}^\infty k(2k+1) r^k
+= 2\sum_{k=1}^\infty k^2 r^k + \sum_{k=1}^\infty k r^k
+= \frac{r(3+r)}{(1-r)^3}.
 \]
+So
 \[
-F'(1) = 1 + \frac{\pi}{2}.
+S = \int_0^1 \frac{r(3+r)}{(1-r)^3}\,dt.
 \]
-Therefore
+After the shift \(t=\tfrac12+u\) (so \(r=\tfrac12-2u^2\)) and the rescaling \(v=2u\),
+the integral reduces to rational functions of \(1+v^2\), whose antiderivatives are
+polynomials in \(v/(1+v^2)\) plus \(\arctan v\). Evaluating on \([0,1]\) yields
 \[
-A = \frac{\pi}{4},\qquad
-B = 1 + \frac{\pi}{2}.
-\]
-Finally,
-\[
-\sum_{k=1}^\infty k a_k
-= \frac{1}{2}\left(B - A\right) + \underbrace{\frac{1}{2} a_0}_{=1}
-= \frac{1}{2}\left(1 + \frac{\pi}{2} - \frac{\pi}{4}\right) + 1
-= \pi + 3.
+S = \pi + 3.
 \]
 
 ---
