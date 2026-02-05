@@ -85,7 +85,7 @@ The system is complete in architecture; the remaining pieces are implementation 
 
 None of these alter the design; they simply make it runnable.
 
-## 1. Four-Layer Wormhole Stack
+## **1. FOUR-LAYER WORMHOLE STACK**
 
 ```asxr
 @wormhole-stack hybrid {
@@ -123,7 +123,7 @@ None of these alter the design; they simply make it runnable.
 
 ---
 
-## 2. Layer 1: DNS Discovery Wormhole
+## **2. LAYER 1: DNS DISCOVERY WORMHOLE**
 
 ### Service Discovery via DNS TXT/HTTPS/SRV
 
@@ -196,7 +196,7 @@ None of these alter the design; they simply make it runnable.
 
 ---
 
-## 3. Layer 2: HTTP Sync Wormhole (WebDAV-Style)
+## **3. LAYER 2: HTTP SYNC WORMHOLE (WEBDAV-STYLE)**
 
 ### State Synchronization with Delta Encoding
 
@@ -278,7 +278,7 @@ None of these alter the design; they simply make it runnable.
 
 ---
 
-## 4. Layer 3: WebSocket Runtime Wormhole
+## **4. LAYER 3: WEBSOCKET RUNTIME WORMHOLE**
 
 ### Binary WebSocket with Protocol Buffers
 
@@ -363,7 +363,7 @@ None of these alter the design; they simply make it runnable.
 
 ---
 
-## 5. Layer 4: SCXQ2 Proof Wormhole
+## **5. LAYER 4: SCXQ2 PROOF WORMHOLE**
 
 ### SCXQ2 = Succinct Compressed eXecution + Quantum Proofs
 
@@ -449,7 +449,7 @@ None of these alter the design; they simply make it runnable.
 
 ---
 
-## 6. Hybrid Wormhole Orchestration
+## **6. HYBRID WORMHOLE ORCHESTRATION**
 
 ### Intelligent Protocol Switching
 
@@ -547,7 +547,7 @@ None of these alter the design; they simply make it runnable.
 
 ---
 
-## 7. Security Model Across Layers
+## **7. SECURITY MODEL ACROSS LAYERS**
 
 ### Defense in Depth
 
@@ -596,7 +596,7 @@ None of these alter the design; they simply make it runnable.
 
 ---
 
-## 8. Performance Characteristics
+## **8. PERFORMANCE CHARACTERISTICS**
 
 ### Benchmark Matrix
 
@@ -674,7 +674,7 @@ None of these alter the design; they simply make it runnable.
 
 ---
 
-## 9. Implementation: Hybrid Wormhole Client
+## **9. IMPLEMENTATION: HYBRID WORMHOLE CLIENT**
 
 ```asxr
 @component HybridWormholeClient {
@@ -750,9 +750,9 @@ None of these alter the design; they simply make it runnable.
 
 ---
 
-## 10. The Hybrid Advantage
+## **10. THE HYBRID ADVANTAGE**
 
-### Why Four Layers Beat Single Protocol
+### **Why Four Layers Beat Single Protocol:**
 
 ```asxr
 @hybrid-advantages {
@@ -767,7 +767,7 @@ None of these alter the design; they simply make it runnable.
 }
 ```
 
-### The Complete Picture
+### **The Complete Picture:**
 
 ```
 ┌─────────────────────────────────────────────────────┐
@@ -789,13 +789,13 @@ None of these alter the design; they simply make it runnable.
 
 ---
 
-## The Evolution
+## **THE EVOLUTION**
 
-From single-protocol to hybrid wormholes:
+**From single-protocol to hybrid wormholes:**
 
 1. Discovery Layer (DNS): Find what's possible
 2. Sync Layer (HTTP/WebDAV): Get in sync efficiently
 3. Runtime Layer (WebSocket): Stay in sync in real-time
 4. Proof Layer (SCXQ2): Verify everything with minimal overhead
 
-This isn't just better networking. It's a complete rethinking of how systems communicate, with built-in discovery, optimization, verification, and security at every layer.
+**This isn't just better networking—it's a complete rethinking of how systems communicate, with built-in discovery, optimization, verification, and security at every layer.** 🌐🌀⚡
