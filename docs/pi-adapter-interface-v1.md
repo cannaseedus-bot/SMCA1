@@ -392,7 +392,28 @@ This extension wires the half-turn theorem into retrieval **without special case
     "geometric": true,
     "embedding": "optional",
     "ngram": "optional"
-  }
+  },
+  "lanes": [
+    "scxq2.pi-signal.v1"
+  ],
+  "operators": {
+    "π-collapse": {
+      "input": "scxq2.pi-signal.v1",
+      "output": "scalar",
+      "law": "exact"
+    },
+    "π-interference": {
+      "inputs": ["scxq2.pi-signal.v1", "scxq2.pi-signal.v1"],
+      "output": "scxq2.pi-signal.v1",
+      "law": "phase-addition + orientation-xor"
+    }
+  },
+  "ordering": {
+    "primary": "geometric_mass",
+    "secondary": "curvature",
+    "tertiary": "orientation"
+  },
+  "profile_dependency": false
 }
 ```
 

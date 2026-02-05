@@ -5,7 +5,8 @@
 
   "required_invariants": [
     "π-gccp.half-turn.series.v1",
-    "π-gccp.mobius.v1"
+    "π-gccp.mobius.v1",
+    "π-gccp.saddle.v1"
   ],
 
   "required_capabilities": {
