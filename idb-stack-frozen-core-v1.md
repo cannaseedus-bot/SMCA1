@@ -124,6 +124,7 @@ LLM = **commentary**, not authority.
 * Attributes carry **identity**, not behavior
 * No mixed authority (IDB never executes)
 * Schema validation = legality gate
+* No implicit transition (every state change requires an explicit causal step)
 
 ---
 
