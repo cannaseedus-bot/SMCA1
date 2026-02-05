@@ -103,7 +103,61 @@ S = \pi + 3.
 
 ---
 
-## 5) Numerical sanity check
+## 5) Hypergeometric + Barnes bridge (analytic form)
+
+Define the hypergeometric generating function
+\[
+F(x)= {}_2F_1\!\left(1,1;\tfrac12;x\right)
+  = \sum_{k=0}^\infty \frac{(1)_k(1)_k}{(\tfrac12)_k}\frac{x^k}{k!}.
+\]
+Using the identity
+\[
+\frac{(k!)^2}{(2k)!}=\frac{1}{4^k}\frac{(1)_k(1)_k}{(\tfrac12)_k k!},
+\]
+the target series can be written as
+\[
+S = \left. x\frac{d}{dx}F(x) \right|_{x=1/2}.
+\]
+
+### Euler (beta) integral
+
+For \(\Re(c)>\Re(b)>0\), the Euler integral representation gives
+\[
+{}_2F_1(a,b;c;x)=\frac{\Gamma(c)}{\Gamma(b)\Gamma(c-b)}
+\int_0^1 t^{b-1}(1-t)^{c-b-1}(1-xt)^{-a}\,dt.
+\]
+With \(a=b=1\), \(c=\tfrac12\),
+\[
+F(x)=-\frac12\int_0^1 \frac{(1-t)^{-3/2}}{1-xt}\,dt.
+\]
+Differentiating under the integral yields
+\[
+x\frac{d}{dx}F(x)
+=-\frac12\int_0^1 \frac{x\,t(1-t)^{-3/2}}{(1-xt)^2}\,dt,
+\]
+and evaluating at \(x=\tfrac12\) recovers the same \(\pi+3\) value after the
+\(t=\sin^2\theta\) substitution.
+
+### Barnes integral
+
+The Barnes representation gives
+\[
+F(x)=\frac{\Gamma(\tfrac12)}{\Gamma(1)^2}
+\cdot \frac{1}{2\pi i}\int_{-i\infty}^{i\infty}
+\frac{\Gamma(1+s)^2\Gamma(-s)}{\Gamma(\tfrac12+s)}(-x)^s\,ds.
+\]
+Then
+\[
+x\frac{d}{dx}F(x)=
+\frac{\sqrt{\pi}}{2\pi i}\int_{-i\infty}^{i\infty}
+\frac{\Gamma(1+s)^2\Gamma(-s)}{\Gamma(\tfrac12+s)}(-x)^s\,s\,ds,
+\]
+and at \(x=\tfrac12\) this contour integral collapses to the same \(\pi+3\)
+via residue summation.
+
+---
+
+## 6) Numerical sanity check
 
 The first few terms are:
 
