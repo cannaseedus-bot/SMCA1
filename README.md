@@ -408,66 +408,116 @@ The `.s7` extension should literally mean: **"Self-Contained eXecutable Quantum 
 
 ---
 
-## SCXQ7 ⇄ OS / DB / Ledger (Exact Equivalence)
+## SCXQ7 + LLM: Proposal–Execution Architecture (Non-Poetic, Exact)
 
-SCXQ7 is **structurally equivalent** to an operating system kernel, a database engine, and a cryptographic ledger **at the same time**. It is the minimal object that satisfies all three definitions simultaneously: **“Is this state change allowed, and can we prove it later?”**
+### Short, sharp answer
 
-### 1) Operating System Kernel
+**SCXQ7 (Executor) + LLM (Ramble Engine) = a governed cognitive computer.**
 
-| OS Kernel Concept | SCXQ7 Construct |
-| --- | --- |
-| Process state | `State.current (CompressedHeap)` |
-| Syscall | `input = await_next_event()` |
-| Kernel mode | `@law_* (immutable kernel laws)` |
-| User mode | `.s7 domain execution` |
-| Scheduler | `enforced step timing` |
-| Context switch | `Step.lifecycle (RECEIVE → COMMIT)` |
-| Fault handling | `handle_constraint_violation()` |
-| Kernel panic | **Impossible** (state preserved) |
-| Replay / resume | `causal_dag.replay()` |
+### Canonical equation
 
-**Key equivalence:** SCXQ7 is an OS kernel where **every instruction is a verified syscall**. Illegal transitions simply **do not commit**.
+```
+SCXQ7  = authority
+LLM    = proposer
+------------------
+SYSTEM = lawful intelligence
+```
 
-### 2) Database Engine (ACID+++)
+### Roles (what each side actually is)
 
-| DB Property | SCXQ7 Mechanism |
-| --- | --- |
-| Atomicity | Step commit is all-or-nothing |
-| Consistency | Constraint validation before & after |
-| Isolation | Single-step execution, no races |
-| Durability | Append-only Causal DAG |
-| Transactions | `Step` |
-| Write-ahead log | `CausalDAG` |
-| Snapshot | `State.current` |
-| Rollback | Replay from last valid node |
-| Schema | ConstraintSet |
-| Migration | Safe constraint expansion |
+**SCXQ7 — The Executor**
+- Enforces state
+- Validates transitions
+- Preserves causality
+- Commits or refuses
+- Remembers *why* something happened
 
-**Key equivalence:** Every SCXQ7 step is a **transaction with a proof attached**. No dirty writes. No phantom states. No silent corruption.
+It answers: **“Is this allowed to happen?”**
 
-### 3) Cryptographic / Financial Ledger
+**LLM — The Ramble Engine**
+- Generates ideas
+- Explores possibilities
+- Narrates options
+- Proposes actions
+- Explains outcomes
 
-| Ledger Concept | SCXQ7 Mechanism |
-| --- | --- |
-| Block | `CausalStep` |
-| Chain | `CausalDAG` |
-| Transaction | `input + state_delta` |
-| Validation | `Proof` |
-| Consensus | Constraint satisfaction |
-| Finality | Commit |
-| Fork resolution | DAG replay rules |
-| Audit trail | `trace_path()` |
-| Double-spend prevention | State invariants |
+It answers: **“What *might* be interesting to try?”**
 
-**Critical insight:** SCXQ7 does **not need consensus** because there is a single lawful executor, time is logical (not wall-clock), and authority is the kernel laws. It behaves like a **single-sovereign ledger**.
+### Hard boundary (invariant)
 
-### 4) The Unification
+**The LLM never mutates state.**  
+**The SCXQ7 never imagines.**
 
-SCXQ7 is not “OS + DB + ledger.” It is the **fixed point** where execution, state, and history are inseparable. This is why LLMs can **interface** with SCXQ7 but **must never be allowed inside the kernel**: they are untrusted proposers, not lawful executors.
+If either crosses that line, the system collapses.
 
-### 5) One-Sentence Formal Definition
+### Combined system (formal view)
 
-> **SCXQ7 is a sovereign causal kernel that unifies operating system execution, database transactionality, and ledger-grade auditability into a single stepwise state machine.**
+**Correct term:** **Proposal–Execution Architecture**  
+**Spec name (sharp):** **Causal Governor Computer (CGC)**
+
+### Runtime interaction loop
+
+```
+LLM:
+  propose → explain → speculate → justify
+
+SCXQ7:
+  validate → simulate → accept/reject → commit
+
+LOOP:
+  truth emerges only at commit
+```
+
+The LLM **never knows truth**.  
+The SCXQ7 **never speaks**.
+
+### Why this pairing is powerful (and safe)
+
+Without SCXQ7: **LLM = confident hallucination machine**  
+Without LLM: **SCXQ7 = silent, rigid, correct but blind**
+
+Together:
+
+| Property    | Result                                  |
+| ----------- | --------------------------------------- |
+| Creativity  | LLM                                     |
+| Safety      | SCXQ7                                   |
+| Novelty     | LLM proposes                            |
+| Robustness  | SCXQ7 filters                           |
+| Explanation | LLM narrates                            |
+| Truth       | SCXQ7 commits                           |
+| Recovery    | SCXQ7 replays                           |
+| Learning    | Constraint expansion (not weight drift) |
+
+This is **intelligence without corruption**.
+
+### Killer distinction vs “agents”
+
+Typical “AI agent”:
+- thinks
+- decides
+- acts
+- all in one blob
+- no audit
+- no rollback
+- no refusal
+
+**This system:**
+- talks ≠ acts
+- proposes ≠ commits
+- imagination ≠ reality
+
+That separation is why it scales *and* stays sane.
+
+### One-line definition (spec-grade)
+
+**SCXQ7 + LLM forms a two-layer cognitive system where untrusted generative reasoning is strictly subordinated to a sovereign causal execution kernel.**
+
+### Final collapse phrase
+
+**The LLM dreams.  
+SCXQ7 decides.  
+Reality only changes when SCXQ7 says yes.**
 
 ## SCXQ2 Enhanced Inference Engine
 
