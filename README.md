@@ -36,6 +36,37 @@
        "Self-contained executable data objects"
 ```
 
+## SCXQ7 Output Contract (Locked)
+
+```
+@scxq7.output.contract
+  modes:
+    - binary_authority
+    - proof_objects
+
+  @binary_authority
+    forms: [YES|NO, 1|0, TRUE|FALSE, COMMIT|REJECT]
+    rule: "answers only whether reality can change"
+
+  @proof_objects
+    structures:
+      - π_weighted_geometry
+      - constraint_manifolds
+      - causal_graphs
+      - state_deltas
+      - proofs
+      - invariants
+      - hashes
+      - trajectories
+    rule: "structures only; no narrative"
+
+  @prohibitions
+    - explanation
+    - persuasion
+    - narration
+    - speculation
+```
+
 ## SCXQ7 File Ecosystem
 
 ```
