@@ -1,0 +1,16 @@
+SCXQ7-REF-ANALYTICS
+MAGIC: 53 43 58 51 37 00 AA 55
+CLASS: SCO/1
+KERNEL: SCXQ7_KERNEL_LAW.v1
+KERNEL_SHA256: 7f9d8c6e4b1a2e7c9a43d2f6c5e89b1a4f7c0e6d2b9a4c1f8e3a6b9d0f12c4e
+ARTIFACT_SHA256: c41a0e8f9b2f7c2a6d9c14c4a7a1d53f9b0e6b2e1c9a0f3a4c7e2d1a6f5b8e9
+
+@seal analytics.s7
+  sco_class: SCO/1
+  kernel: SCXQ7_KERNEL_LAW.v1
+  verifier: scxq7-verify v1.0.0
+  status: sealed
+
+@note
+  role: "reference object"
+  status: "sealed"

@@ -1,0 +1,56 @@
+{
+  "@schema": "scxq7://compliance/manifest/v1",
+  "sco_class": "SCO/1",
+  "kernel": {
+    "name": "SCXQ7_KERNEL_LAW",
+    "version": "v1",
+    "size_bytes": 256,
+    "sha256": "7f9d8c6e4b1a2e7c9a43d2f6c5e89b1a4f7c0e6d2b9a4c1f8e3a6b9d0f12c4e",
+    "status": "immutable"
+  },
+  "invariants": [
+    "file_sovereignty",
+    "symbolic_legality",
+    "execution_domain_boundaries",
+    "object_autonomy",
+    "compression_as_substrate",
+    "projection_powerlessness"
+  ],
+  "verifier": {
+    "name": "scxq7-verify",
+    "version": "v1.0.0",
+    "mode": "mechanical",
+    "pass_condition": "all_vectors_pass",
+    "fail_condition": "any_vector_fail"
+  },
+  "verification_vectors": [
+    "magic_bytes",
+    "kernel_integrity",
+    "symbol_closure",
+    "context_boundaries",
+    "external_authority_absence",
+    "persistence_legality",
+    "compression_substrate",
+    "projection_powerlessness"
+  ],
+  "host_contract": {
+    "must": [
+      "verify_kernel",
+      "enforce_symbol_legality",
+      "enforce_context_boundaries",
+      "execute_muops",
+      "respect_persistence_rules"
+    ],
+    "must_not": [
+      "extend_execution",
+      "modify_kernel",
+      "reinterpret_symbols",
+      "optimize_beyond_law",
+      "grant_projection_authority"
+    ]
+  },
+  "compliance_statement": {
+    "meaning": "This artifact complies with SCO/1 as defined by SCXQ7",
+    "disclaimer": "Compliance asserts lawfulness only, not safety, performance, or correctness"
+  }
+}
