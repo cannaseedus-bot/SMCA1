@@ -74,6 +74,17 @@ This architecture is a **Tiered Causal Transport Architecture (TCTA)** with **Hy
 > SCXQ7 decides reality.  
 > SCXQ2 proves it happened.**
 
+### Natural Next Work (When Ready)
+
+The system is complete in architecture; the remaining pieces are implementation detail seams:
+
+1. **Wormhole → SCXQ7 syscall envelope** (formal call boundary).
+2. **Capability objects schema** (`wormhole.capabilities.xjson`).
+3. **Proof anchoring**: SCXQ2 ↔ IDB hash ↔ CM-1 offsets.
+4. **Failure semantics**: reconciliation when layers disagree.
+
+None of these alter the design; they simply make it runnable.
+
 ## 1. Four-Layer Wormhole Stack
 
 ```asxr
