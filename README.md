@@ -1054,3 +1054,12 @@ The registry format is append-only, declarative, and non-authoritative.
 - File: `scxq7.registry.json`
 - Schema: `scxq7://registry/v1`
 - Trust model: `verify_locally`
+
+---
+
+## IDB Stack — Frozen Core v1 (Locked)
+
+Canonical schema, mirror rules, and SCXQ2 lane packing for IDB are published in the frozen core spec.
+
+- File: `idb.schema.xsd`
+- Spec: `idb-stack-frozen-core-v1.md`
