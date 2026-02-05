@@ -123,6 +123,59 @@ determinism law. π-GCCP never inspects model type or training origin; it only c
 
 ---
 
+## 1.6 Standardization Targets (Normative)
+
+π-GCCP does **not** standardize models. It standardizes geometry contracts and interpretation
+rules. Conformance is defined by the following locked targets:
+
+1. **Adapter output schema**
+   * Canonical primitives only (`angles`, `magnitudes`, `paths`, `epsilon`).
+   * Deterministic mapping rules for each adapter.
+   * Declared error bounds or tolerance (`epsilon`) for emitted geometry.
+2. **π-Profile authoring rules**
+   * Weighting and decay are profile-level concerns, not adapter concerns.
+   * Interference logic is applied only after signal emission.
+3. **SVG-Tensor canonicalization**
+   * Identical geometry must hash identically.
+   * Identical input to a conformant adapter must yield identical retrieval inputs.
+4. **Object Server contracts**
+   * Retrieval interfaces are **model-agnostic** and consume geometry only.
+
+Any adapter that emits geometry but violates these targets is **non-conformant**.
+
+---
+
+## 1.7 Adapter Mapping Examples (Non-Normative)
+
+These examples illustrate lawful signal normalization patterns. All mappings terminate in the
+canonical output object and do not leak model-specific representations.
+
+### LLM Logits Adapter
+
+* logits → ranked deltas
+* deltas → angular deviations
+* entropy → magnitude scaling
+
+### Embedding Adapter (GGUF / SBERT / OpenAI)
+
+* vector → unit-circle projection
+* cosine similarity → angular proximity
+* norm → confidence weight
+
+### N-gram Adapter
+
+* frequency → angular density
+* overlap → interference potential
+* rarity → phase shift
+
+### Vision / Audio / Multimodal Adapter
+
+* features → spectral bands
+* bands → phase stacks
+* stacks → superposed geometry
+
+---
+
 # 2. WGSL Reference Kernels (Angle + Interference)
 
 These kernels implement **π-GCCP math only**. They do not know about models.
