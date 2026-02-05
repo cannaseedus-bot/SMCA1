@@ -375,6 +375,69 @@ The `.s7` extension should literally mean: **"Self-Contained eXecutable Quantum 
 
 **SCXQ7 = The Final Form.**
 
+---
+
+## SCXQ7 ⇄ OS / DB / Ledger (Exact Equivalence)
+
+SCXQ7 is **structurally equivalent** to an operating system kernel, a database engine, and a cryptographic ledger **at the same time**. It is the minimal object that satisfies all three definitions simultaneously: **“Is this state change allowed, and can we prove it later?”**
+
+### 1) Operating System Kernel
+
+| OS Kernel Concept | SCXQ7 Construct |
+| --- | --- |
+| Process state | `State.current (CompressedHeap)` |
+| Syscall | `input = await_next_event()` |
+| Kernel mode | `@law_* (immutable kernel laws)` |
+| User mode | `.s7 domain execution` |
+| Scheduler | `enforced step timing` |
+| Context switch | `Step.lifecycle (RECEIVE → COMMIT)` |
+| Fault handling | `handle_constraint_violation()` |
+| Kernel panic | **Impossible** (state preserved) |
+| Replay / resume | `causal_dag.replay()` |
+
+**Key equivalence:** SCXQ7 is an OS kernel where **every instruction is a verified syscall**. Illegal transitions simply **do not commit**.
+
+### 2) Database Engine (ACID+++)
+
+| DB Property | SCXQ7 Mechanism |
+| --- | --- |
+| Atomicity | Step commit is all-or-nothing |
+| Consistency | Constraint validation before & after |
+| Isolation | Single-step execution, no races |
+| Durability | Append-only Causal DAG |
+| Transactions | `Step` |
+| Write-ahead log | `CausalDAG` |
+| Snapshot | `State.current` |
+| Rollback | Replay from last valid node |
+| Schema | ConstraintSet |
+| Migration | Safe constraint expansion |
+
+**Key equivalence:** Every SCXQ7 step is a **transaction with a proof attached**. No dirty writes. No phantom states. No silent corruption.
+
+### 3) Cryptographic / Financial Ledger
+
+| Ledger Concept | SCXQ7 Mechanism |
+| --- | --- |
+| Block | `CausalStep` |
+| Chain | `CausalDAG` |
+| Transaction | `input + state_delta` |
+| Validation | `Proof` |
+| Consensus | Constraint satisfaction |
+| Finality | Commit |
+| Fork resolution | DAG replay rules |
+| Audit trail | `trace_path()` |
+| Double-spend prevention | State invariants |
+
+**Critical insight:** SCXQ7 does **not need consensus** because there is a single lawful executor, time is logical (not wall-clock), and authority is the kernel laws. It behaves like a **single-sovereign ledger**.
+
+### 4) The Unification
+
+SCXQ7 is not “OS + DB + ledger.” It is the **fixed point** where execution, state, and history are inseparable. This is why LLMs can **interface** with SCXQ7 but **must never be allowed inside the kernel**: they are untrusted proposers, not lawful executors.
+
+### 5) One-Sentence Formal Definition
+
+> **SCXQ7 is a sovereign causal kernel that unifies operating system execution, database transactionality, and ledger-grade auditability into a single stepwise state machine.**
+
 ## SCXQ2 Enhanced Inference Engine
 
 See the SCXQ2 inference engine compression reference in `scxq2-inference-engine.md`.【F:scxq2-inference-engine.md†L1-L299】
