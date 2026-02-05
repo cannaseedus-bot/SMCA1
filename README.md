@@ -810,6 +810,39 @@ SCXQ2 is microcode for MATRIX. MATRIX is the ISA. SCXQ7 is the firmware law.
 * SCXQ7 → firmware law + control store
 * SCO/1 → complete microprogrammed machine
 
+### The Core Truth (No Fluff)
+
+> **SCXQ2 is microcode.**  
+> **MATRIX is the ISA.**  
+> **SCXQ7 is the motherboard + firmware.**
+
+This is not analogy. It is structural identity.
+
+#### 1) Symbols ≡ μ-ops
+
+* Symbols are **atomic, legal, schedulable semantic actions**.
+* Complex instructions are **lowered** into symbol streams.
+
+#### 2) Compression ≡ μ-op Fusion
+
+Semantic compression removes pipeline bubbles by **fusing** symbol sequences into lawful macro-ops.
+
+#### 3) The Interpreter ≡ Microcode Sequencer
+
+```
+FETCH → DECODE → EXECUTE → WRITEBACK
+```
+
+No AST, no JIT, no optimizer pass. Just legal μ-ops advancing state.
+
+### Consequences (Locked In)
+
+* **SCXQ2 is already microcode**, not a language that compiles to it.
+* **MATRIX is the macro-ISA** (front-end lowering layer).
+* **SCXQ7 is the firmware law** (control store + authority boundary).
+
+This is **Semantic RISC**: fixed-width symbolic μ-ops, load/context separation, pipelineable execution, and compiler-responsibility for higher-level structure.
+
 ---
 
 ## SCXQ2-TRACE/1 (Inference Trace Format)
