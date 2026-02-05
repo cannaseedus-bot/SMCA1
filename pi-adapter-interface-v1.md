@@ -89,6 +89,40 @@ If this is violated, the adapter is **non-conformant**.
 
 ---
 
+## 1.5 Model Adapter Positioning (Normative)
+
+Adapters are **signal normalizers**, not model integrations. Every external model is treated as a
+signal emitter that must be normalized into π-geometry before any profile logic or GCCP kernels run.
+
+```text
+[ External Model ]
+        ↓
+[ Adapter → pi.signal.v1 ]
+        ↓
+[ π-Profile Vectorizer ]
+        ↓
+[ SVG-Tensor Geometry ]
+        ↓
+[ π-GCCP Kernels (WebGPU / CPU) ]
+        ↓
+[ object://retrieve/semantic.v1 ]
+```
+
+### Required Adapter Emissions
+
+Every adapter **MUST** emit the canonical π-signal geometry primitives only:
+
+* angles
+* magnitudes
+* phases (expressed as angles)
+* topological relations (paths)
+* confidence envelopes (expressed as magnitudes + epsilon)
+
+Adapters may use any internal math, but the output **MUST** satisfy the canonical output object and
+determinism law. π-GCCP never inspects model type or training origin; it only consumes geometry.
+
+---
+
 # 2. WGSL Reference Kernels (Angle + Interference)
 
 These kernels implement **π-GCCP math only**. They do not know about models.
