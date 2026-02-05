@@ -1,0 +1,28 @@
+{
+  "@schema": "scxq7://registry/v1",
+  "registry_name": "SCXQ7 Public Compliance Registry",
+  "registry_version": "v1",
+  "append_only": true,
+  "entries": [
+    {
+      "id": "SCO-REF-ANALYTICS-v1",
+      "artifact": "analytics.s7",
+      "sco_class": "SCO/1",
+      "kernel": "SCXQ7_KERNEL_LAW.v1",
+      "kernel_sha256": "7f9d8c6e4b1a2e7c9a43d2f6c5e89b1a4f7c0e6d2b9a4c1f8e3a6b9d0f12c4e",
+      "artifact_sha256": "c41a0e8f9b2f7c2a6d9c14c4a7a1d53f9b0e6b2e1c9a0f3a4c7e2d1a6f5b8e9",
+      "verifier": {
+        "name": "scxq7-verify",
+        "version": "v1.0.0",
+        "result": "PASS"
+      },
+      "designation": "reference",
+      "timestamp": "2026-02-05T00:00:00Z"
+    }
+  ],
+  "rules": {
+    "authority": "none",
+    "trust_model": "verify_locally",
+    "revocation": "by superseding entry only"
+  }
+}
