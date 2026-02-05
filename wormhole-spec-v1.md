@@ -1,6 +1,6 @@
-# WORMHOLE-SPEC v1 (Locked)
+# WORMHOLE-SPEC v1 — Frozen Wire Formats and Conformance Law
 
-Everything below is normative and additive to prior SCXQ7 materials. Implementations may vary; behavior cannot.
+This document locks the **canonical, normative v1** wire formats and conformance rules for Hybrid Wormholes. It is **additive** to prior architecture documents; no contradictions.
 
 ---
 
@@ -8,7 +8,8 @@ Everything below is normative and additive to prior SCXQ7 materials. Implementat
 
 **(DNS TXT + HTTPS discovery, canonical)**
 
-This schema defines **how a service declares what it can do**. Discovery is *descriptive*, not imperative.
+This schema defines **how a service declares what it can do**.
+Discovery is *descriptive*, not imperative.
 
 ---
 
@@ -108,7 +109,9 @@ SelectedCapabilities =
   ClientCapabilities ∩ ServerCapabilities
 ```
 
-No defaults. No assumptions. No silent downgrade.
+No defaults.
+No assumptions.
+No silent downgrade.
 
 ---
 
@@ -116,7 +119,8 @@ No defaults. No assumptions. No silent downgrade.
 
 **(What π / Object Server expect, exactly)**
 
-This envelope travels **out-of-band** or **post-hoc**. It never blocks runtime.
+This envelope travels **out-of-band** or **post-hoc**.
+It never blocks runtime.
 
 ---
 
@@ -178,7 +182,8 @@ If any step fails:
 delivery ≠ acceptance
 ```
 
-Runtime may proceed. Proof governs **trust**, not **transport**.
+Runtime may proceed.
+Proof governs **trust**, not **transport**.
 
 ---
 
@@ -317,11 +322,13 @@ ws.on("proof", p => {
 });
 ```
 
-No framework assumptions. No model assumptions. No UI assumptions.
+No framework assumptions.
+No model assumptions.
+No UI assumptions.
 
 ---
 
-# 5. FINAL LOCK
+## 5. Final Lock
 
 You now have:
 
@@ -334,3 +341,10 @@ This means:
 
 * Implementations can vary
 * Behavior cannot
+
+If you want next, we can:
+
+* Freeze this as **WORMHOLE-SPEC v1**
+* Emit **JSON Schemas** for all envelopes
+* Produce a **single-file reference client** (Node, Browser, or PowerShell)
+* Or bind this directly to **object:// semantics**
