@@ -402,7 +402,7 @@ This extension wires the half-turn theorem into retrieval **without special case
 {
   "@register": "pi-gccp.kernel",
   "id": "half-turn.series",
-  "theorem": "pi-gccp.half-turn.series.v1",
+  "theorem": "π-gccp.half-turn.series.v1",
   "inputs": {
     "query_tensor": "SVG-Tensor",
     "profile": "pi-profile | null"

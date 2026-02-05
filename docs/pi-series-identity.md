@@ -164,7 +164,7 @@ series; it defines the invariant the kernel must obey.
 
 ```json
 {
-  "@theorem": "pi-gccp.half-turn.series.v1",
+  "@theorem": "π-gccp.half-turn.series.v1",
   "@status": "normative",
   "@domain": "geometric-collapse",
   "@rank": 2,
@@ -207,7 +207,7 @@ series; it defines the invariant the kernel must obey.
     "numeric_approximation": false,
     "geometry_required": true
   },
-  "canonical_kernel": "pi-gccp.kernel.half-turn.wgsl"
+  "canonical_kernel": "π-gccp.kernel.half-turn.wgsl"
 }
 ```
 

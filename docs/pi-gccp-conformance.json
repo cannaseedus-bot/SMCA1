@@ -1,11 +1,13 @@
 {
-  "@conformance": "pi-gccp.v1",
+  "@conformance": "π-gccp.v1",
   "@status": "normative",
   "@scope": "engine",
+
   "required_invariants": [
-    "pi-gccp.half-turn.series.v1",
-    "pi-gccp.mobius.v1"
+    "π-gccp.half-turn.series.v1",
+    "π-gccp.mobius.v1"
   ],
+
   "required_capabilities": {
     "geometry": {
       "phase": true,
@@ -23,6 +25,7 @@
       "training-less": true
     }
   },
+
   "kernel_requirements": {
     "wgsl": {
       "must_support": [
@@ -39,12 +42,14 @@
       "approximation": "forbidden"
     }
   },
+
   "retrieval_requirements": {
     "integration": "object://retrieve/semantic.v1",
     "ordering": "geometry-dominant",
     "embedding_role": "optional-accelerator",
     "ngram_role": "index-only"
   },
+
   "validation_tests": [
     {
       "id": "half-turn-closure",
@@ -62,6 +67,7 @@
       "tolerance": 0
     }
   ],
+
   "forbidden": [
     "probabilistic-ranking",
     "training-updates",
@@ -69,8 +75,9 @@
     "approximate-numerics",
     "embedding-only-semantic-decision"
   ],
+
   "compliance_result": {
-    "pass": "engine-may-advertise pi-gccp.v1",
-    "fail": "engine-must-not-claim pi-gccp compatibility"
+    "pass": "engine-may-advertise π-gccp.v1",
+    "fail": "engine-must-not-claim π-gccp compatibility"
   }
 }
