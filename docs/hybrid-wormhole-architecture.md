@@ -237,6 +237,7 @@ This guarantees protocol agility: QUIC, BLE, IPFS, or sneakernet can change with
 
 ---
 
+## 2. Layer 1: DNS Discovery Wormhole
 ## **2. LAYER 1: DNS DISCOVERY WORMHOLE**
 
 ### Service Discovery via DNS TXT/HTTPS/SRV
@@ -310,7 +311,7 @@ This guarantees protocol agility: QUIC, BLE, IPFS, or sneakernet can change with
 
 ---
 
-## **3. LAYER 2: HTTP SYNC WORMHOLE (WEBDAV-STYLE)**
+## 3. Layer 2: HTTP Sync Wormhole (WebDAV-Style)
 
 ### State Synchronization with Delta Encoding
 
@@ -392,7 +393,7 @@ This guarantees protocol agility: QUIC, BLE, IPFS, or sneakernet can change with
 
 ---
 
-## **4. LAYER 3: WEBSOCKET RUNTIME WORMHOLE**
+## 4. Layer 3: WebSocket Runtime Wormhole
 
 ### Binary WebSocket with Protocol Buffers
 
@@ -477,7 +478,7 @@ This guarantees protocol agility: QUIC, BLE, IPFS, or sneakernet can change with
 
 ---
 
-## **5. LAYER 4: SCXQ2 PROOF WORMHOLE**
+## 5. Layer 4: SCXQ2 Proof Wormhole
 
 ### SCXQ2 = Succinct Compressed eXecution + Quantum Proofs
 
@@ -563,7 +564,7 @@ This guarantees protocol agility: QUIC, BLE, IPFS, or sneakernet can change with
 
 ---
 
-## **6. HYBRID WORMHOLE ORCHESTRATION**
+## 6. Hybrid Wormhole Orchestration
 
 ### Intelligent Protocol Switching
 
@@ -661,7 +662,7 @@ This guarantees protocol agility: QUIC, BLE, IPFS, or sneakernet can change with
 
 ---
 
-## **7. SECURITY MODEL ACROSS LAYERS**
+## 7. Security Model Across Layers
 
 ### Defense in Depth
 
@@ -710,7 +711,7 @@ This guarantees protocol agility: QUIC, BLE, IPFS, or sneakernet can change with
 
 ---
 
-## **8. PERFORMANCE CHARACTERISTICS**
+## 8. Performance Characteristics
 
 ### Benchmark Matrix
 
@@ -788,7 +789,7 @@ This guarantees protocol agility: QUIC, BLE, IPFS, or sneakernet can change with
 
 ---
 
-## **9. IMPLEMENTATION: HYBRID WORMHOLE CLIENT**
+## 9. Implementation: Hybrid Wormhole Client
 
 ```asxr
 @component HybridWormholeClient {
@@ -864,9 +865,9 @@ This guarantees protocol agility: QUIC, BLE, IPFS, or sneakernet can change with
 
 ---
 
-## **10. THE HYBRID ADVANTAGE**
+## 10. The Hybrid Advantage
 
-### **Why Four Layers Beat Single Protocol:**
+### Why Four Layers Beat Single Protocol
 
 ```asxr
 @hybrid-advantages {
@@ -881,7 +882,7 @@ This guarantees protocol agility: QUIC, BLE, IPFS, or sneakernet can change with
 }
 ```
 
-### **The Complete Picture:**
+### The Complete Picture
 
 ```
 ┌─────────────────────────────────────────────────────┐
@@ -903,13 +904,13 @@ This guarantees protocol agility: QUIC, BLE, IPFS, or sneakernet can change with
 
 ---
 
-## **THE EVOLUTION**
+## The Evolution
 
-**From single-protocol to hybrid wormholes:**
+From single-protocol to hybrid wormholes:
 
 1. Discovery Layer (DNS): Find what's possible
 2. Sync Layer (HTTP/WebDAV): Get in sync efficiently
 3. Runtime Layer (WebSocket): Stay in sync in real-time
 4. Proof Layer (SCXQ2): Verify everything with minimal overhead
 
-**This isn't just better networking—it's a complete rethinking of how systems communicate, with built-in discovery, optimization, verification, and security at every layer.** 🌐🌀⚡
+This isn't just better networking. It's a complete rethinking of how systems communicate, with built-in discovery, optimization, verification, and security at every layer.
