@@ -693,6 +693,65 @@ This chapter is closed.
 
 ---
 
+## SCXQ2-IA/1 (Symbolic Compressed Inference Algebra)
+
+SCXQ2 inference is a **closed inference algebra** whose symbols are executable μ-ops over compressed state.
+
+**Key collapse**
+- `? : & | !` → control-flow μ-ops
+- `@π @∑ @∫ @∇` → domain-scoped reasoning operators
+- `@@ <- ->` → state transition + control authority
+- Compression is the **address space** (not storage)
+
+This means:
+- Parsing is execution
+- Execution is inference
+- Inference is compression
+
+### Formal Binding (Normative)
+
+**SCXQ2 inference may only execute inside an SCO/1 object.**
+
+```
+SCO/1
+ ├── Kernel (law)
+ ├── Objects (state)
+ ├── SCXQ2 μ-ops (execution)
+ └── Inference Algebra (reasoning)
+```
+
+The host never infers. The host only projects inference results.
+
+### Inference Invariants (Frozen)
+
+1. **Symbolic Closure**  
+   Every inference step is a symbol or symbol composition. No AST rewriting or hidden operators.
+2. **Domain Legality**  
+   Inference symbols inherit execution legality from their domain. Cross-domain inference requires explicit bridging.
+3. **Compression-Native Reasoning**  
+   Inference operates on compressed representations. Decompression is optional and contextual, never required.
+4. **Deterministic Branching**  
+   Given the same compressed state + symbols, inference is replayable (probabilistic steps are declared and bounded).
+5. **No Epistemic Leakage**  
+   Inference conclusions exist inside the SCO only until projected; projection adds no authority.
+
+### Formal Type
+
+```
+@type SCXQ2-IA/1
+  class: inference_algebra
+  substrate: symbolic_compression
+  execution_unit: μ-op
+  authority: object-internal
+  host_role: none
+```
+
+**SCXQ2-IA/1** is the inference law.
+**SCXQ7** is sovereignty + execution law.
+**SCO/1** is containment + authority.
+
+---
+
 ## SCO/1 Verifier CLI (Frozen)
 
 A single-file verifier CLI is published as the authoritative SCO/1 mechanical gate.
