@@ -3,6 +3,7 @@
 ## KUHUL Notes
 
 - [KUHUL: Simulator Boundary Notes](kuhul-simulator-boundary.md)
+- [Hybrid Wormhole Architecture: The Tiered Control Plane](hybrid-wormhole-architecture.md)
 ## SCXQ7: Executable Data Objects
 
 ```
