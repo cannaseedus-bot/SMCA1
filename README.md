@@ -5,6 +5,7 @@
 - [KUHUL: Simulator Boundary Notes](kuhul-simulator-boundary.md)
 - [Hybrid Wormhole Architecture: The Tiered Control Plane](hybrid-wormhole-architecture.md)
 - [π-Adapter Interface v1 (Locked)](pi-adapter-interface-v1.md)
+- [WORMHOLE-SPEC v1 (Locked)](wormhole-spec-v1.md)
 ## SCXQ7: Executable Data Objects
 
 ```
