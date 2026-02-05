@@ -36,6 +36,36 @@
        "Self-contained executable data objects"
 ```
 
+## IDB.xml — Indexed Data Backbone (Ledger, Read-Only)
+
+IDB.xml is the **canonical, read-only XML ledger** of SCXQ7 state and causality, designed for deterministic replay, audit, and DOM-native inspection. It is a projection for inspection and verification — **not execution**.
+
+### Authority boundary (hard rule)
+
+```
+SCXQ7  = writes IDB.xml
+IDB.xml = read-only
+LLM    = never writes
+UI     = never mutates
+```
+
+### Ledger contents (canonical)
+
+* State snapshots
+* Causal steps
+* Proof hashes
+* Constraint sets
+* Logical timestamps
+* References to CM-1 phase boundaries (by hash/offset)
+
+### Ledger exclusions (never)
+
+* Executable logic
+* Scripts
+* Evaluation rules
+* Side effects
+* Implicit transitions
+
 ## SCXQ7 File Ecosystem
 
 ```
