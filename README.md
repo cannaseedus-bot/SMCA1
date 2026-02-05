@@ -375,6 +375,10 @@ The `.s7` extension should literally mean: **"Self-Contained eXecutable Quantum 
 
 **SCXQ7 = The Final Form.**
 
+## SCXQ2 Enhanced Inference Engine
+
+See the SCXQ2 inference engine compression reference in `scxq2-inference-engine.md`.【F:scxq2-inference-engine.md†L1-L299】
+
 ## SCO/1 Formalization (Locked)
 
 ### Canonical Class Name
