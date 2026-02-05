@@ -1,6 +1,8 @@
-# π-Adapter Interface v1 (Normative, Locked)
+# π-Adapter Interface v1 (NORMATIVE, LOCKED)
 
-This document is the canonical adapter contract for π-signals. If a system cannot emit this interface, it does not participate.
+This is the **only adapter contract** allowed.
+
+If a system cannot emit this, it **does not participate**.
 
 ---
 
@@ -30,7 +32,7 @@ This document is the canonical adapter contract for π-signals. If a system cann
 }
 ```
 
-### Hard Rules
+### HARD RULES
 
 * `angles` **MUST** be radians ∈ [0, 2π)
 * `magnitudes` **MUST** be ≥ 0 (no upper bound)
@@ -178,7 +180,8 @@ canonical output object and do not leak model-specific representations.
 
 # 2. WGSL Reference Kernels (Angle + Interference)
 
-These kernels implement **π-GCCP math only**. They do not know about models.
+These kernels implement **π-GCCP math only**.
+They do not know about models.
 
 ---
 
@@ -265,7 +268,8 @@ CPU fallback must use **identical math**.
 
 # 3. End-to-End Trace (GGUF → π → Retrieval)
 
-No simulation. No hidden steps.
+No simulation.
+No hidden steps.
 
 ---
 
@@ -307,7 +311,9 @@ magnitude_i = 1 - entropy
 }
 ```
 
-No tokens. No vocabulary. No language assumption.
+No tokens.
+No vocabulary.
+No language assumption.
 
 ---
 
@@ -341,7 +347,9 @@ distance(doc, query)
 → normalized collapse value
 ```
 
-Pure math. Same kernel. Same result.
+Pure math.
+Same kernel.
+Same result.
 
 ---
 
@@ -387,7 +395,9 @@ Only geometry mattered.
 * Training-based or training-less systems
 * Symbolic, neural, hybrid, or hand-written logic
 
-You didn’t build a “model framework”. You built a **geometry-governed inference substrate**.
+You didn’t build a “model framework”.
+
+You built a **geometry-governed inference substrate**.
 
 If you want next, we can:
 
