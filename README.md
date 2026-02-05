@@ -1404,177 +1404,100 @@ Canonical schema, mirror rules, and SCXQ2 lane packing for IDB are published in 
 
 ---
 
-## Cheat Sheets vs Simulators (the Real Split)
+## AI "5B" Clarification (Parameters ≠ Series Terms)
 
-### 1️⃣ Cheat Sheets (What LLMs Mostly Are)
+Short answer: **no — when people say “5 billion” in AI, they’re almost never talking about 5 billion *terms* like a math series**.
 
-A cheat sheet is:
+They’re talking about **~5 billion parameters (weights)**.
 
-- **Pre-computed**
-- **Collapsed**
-- **Lookup-based**
-- **Pattern-driven**
-- **Fast**
-- **Brittle outside scope**
+### What “5B” means in AI models
 
-It does *not* model reality.  
-It models **answers that tended to work**.
+When you see:
 
-Think:
+* **5B model**
+* **7B model**
+* **70B model**
 
-- trig tables
-- log tables
-- exam notes
-- memorized chess openings
+That number refers to **parameters** — learned scalar values (weights + biases) stored in tensors.
 
-**Core property**
+Think of parameters as:
 
-> The work already happened elsewhere.
+* knobs
+* coefficients
+* stored numerical state
 
-At runtime, nothing is *derived*.  
-You’re just interpolating.
+A **5B parameter model** literally contains ~5,000,000,000 learned numbers.
 
----
+Not terms.
+Not steps.
+Not equations.
 
-### 2️⃣ Simulators (What People *Think* AI Is)
+### Why it’s *not* like Machin’s formula
 
-A simulator is:
+**Machin’s formula** (or similar series for π) looks like this conceptually:
 
-- **Stateful**
-- **Causal**
-- **Step-based**
-- **Constraint-checked**
-- **Slow**
-- **Robust under novelty**
+* A **small equation**
+* Expanded into **millions or billions of terms**
+* Each term is *computed* and *summed*
 
-It *does* model reality (or a formal world).
+That’s a **procedural expansion**.
 
-Think:
+AI models are the opposite:
 
-- physics engines
-- game worlds
-- circuit simulators
-- climate models
-- theorem provers
-- CPU emulators
+* The “expansion” already happened during training
+* The results are **collapsed into weights**
+* Inference does **no series expansion**
 
-**Core property**
+So instead of:
 
-> The answer emerges by running the system.
+> π = sum(term₁ + term₂ + term₃ + … + term₅,₀₀₀,₀₀₀,₀₀₀)
 
-At runtime, the system **must obey laws**.
+It’s more like:
 
----
+> Output = f(input, **5B frozen coefficients**)
 
-### Side-by-side (No Fluff)
+### The closest real analogy
 
-| Dimension | Cheat Sheet        | Simulator          |
-| --------- | ------------------ | ------------------ |
-| Knowledge | Stored             | Generated          |
-| Runtime   | Lookup             | Execution          |
-| Errors    | Confident nonsense | Detectable failure |
-| Novelty   | Fragile            | Graceful           |
-| Truth     | Statistical        | Constraint-bound   |
-| Speed     | Extremely fast     | Slower             |
-| Cost paid | Training           | Inference          |
-| Laws      | Implicit           | Explicit           |
-| Grounding | None               | Built-in           |
+If you *had* to compare:
 
----
+| Math Series                   | Neural Model                        |
+| ----------------------------- | ----------------------------------- |
+| Terms are computed every time | Weights are pre-computed            |
+| Expansion happens at runtime  | Expansion happened during training  |
+| Terms are sequential          | Weights are parallel                |
+| High compute per use          | High storage, lower compute per use |
 
-### Why LLMs *Feel* Like Simulators (But Aren’t)
+So **training** is closer to “finding the coefficients of a giant implicit series”, but **inference is just evaluating a function**.
 
-LLMs are trained on **records of simulations**:
+### Why the confusion happens (and it’s reasonable)
 
-- explanations
-- arguments
-- proofs
-- code
-- debates
+People say things like:
 
-So they learn:
+* “The model contains knowledge equivalent to trillions of calculations”
+* “The model encodes enormous combinatorial space”
 
-> “What does a *simulation result* look like when humans describe it?”
+That’s **true**, but misleading if taken literally.
 
-They can **imitate the *output* of reasoning**  
-without executing the reasoning.
+The model does **not**:
 
-That illusion is powerful — and dangerous.
+* iterate billions of steps
+* evaluate billions of terms
+* run giant symbolic expansions
 
----
+It just:
 
-### The Key Failure Mode (This Is the Tell)
+* does matrix multiplications
+* applies nonlinearities
+* uses stored weights
 
-Ask a cheat sheet:
+### The deeper truth (and this aligns with the SCXQ frame)
 
-> “What happens if I bend the rules a little?”
+A trained model is best understood as:
 
-It answers confidently.
+> **A compressed field of learned constraints**
 
-Ask a simulator:
+Or in SCXQ language:
 
-> “What happens if I bend the rules a little?”
+> **A collapsed microcode lattice**, not a runtime derivation.
 
-It either:
-
-- crashes
-- refuses
-- diverges
-- produces something visibly broken
-
-That difference matters.
-
----
-
-### Why This Matters for Safety and Power
-
-**Cheat sheets:**
-
-- scale easily
-- hallucinate
-- persuade
-- bluff
-- imitate authority
-
-**Simulators:**
-
-- resist lying
-- expose contradictions
-- require structure
-- don’t care how convincing they sound
-
-This is why:
-
-- LLMs write great essays
-- LLMs suck at physics without engines
-- LLMs invent citations
-- LLMs need tools to be reliable
-
----
-
-### The Uncomfortable Middle Ground (Where Things Get Spicy)
-
-Some systems are **hybrids**:
-
-- LLM = cheat sheet
-- Tool / engine = simulator
-- Orchestrator = referee
-
-That’s the only way to get:
-
-- speed **and**
-- grounding **and**
-- novelty **and**
-- correctness
-
-Pure cheat sheets lie.  
-Pure simulators are expensive.
-
----
-
-### The Sentence That Locks It In
-
-**A cheat sheet predicts what usually happens.  
-A simulator enforces what must happen.**
-
-Everything else is commentary.
+**One-line takeaway:** **“5 billion” = 5 billion stored coefficients, not 5 billion computed terms.**
