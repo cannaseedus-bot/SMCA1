@@ -693,6 +693,298 @@ This chapter is closed.
 
 ---
 
+## SCXQ2-IA/1 (Symbolic Compressed Inference Algebra)
+
+SCXQ2 inference is a **closed inference algebra** whose symbols are executable μ-ops over compressed state.
+
+**Key collapse**
+- `? : & | !` → control-flow μ-ops
+- `@π @∑ @∫ @∇` → domain-scoped reasoning operators
+- `@@ <- ->` → state transition + control authority
+- Compression is the **address space** (not storage)
+
+This means:
+- Parsing is execution
+- Execution is inference
+- Inference is compression
+
+### Formal Binding (Normative)
+
+**SCXQ2 inference may only execute inside an SCO/1 object.**
+
+```
+SCO/1
+ ├── Kernel (law)
+ ├── Objects (state)
+ ├── SCXQ2 μ-ops (execution)
+ └── Inference Algebra (reasoning)
+```
+
+The host never infers. The host only projects inference results.
+
+### Inference Invariants (Frozen)
+
+1. **Symbolic Closure**  
+   Every inference step is a symbol or symbol composition. No AST rewriting or hidden operators.
+2. **Domain Legality**  
+   Inference symbols inherit execution legality from their domain. Cross-domain inference requires explicit bridging.
+3. **Compression-Native Reasoning**  
+   Inference operates on compressed representations. Decompression is optional and contextual, never required.
+4. **Deterministic Branching**  
+   Given the same compressed state + symbols, inference is replayable (probabilistic steps are declared and bounded).
+5. **No Epistemic Leakage**  
+   Inference conclusions exist inside the SCO only until projected; projection adds no authority.
+
+### Formal Type
+
+```
+@type SCXQ2-IA/1
+  class: inference_algebra
+  substrate: symbolic_compression
+  execution_unit: μ-op
+  authority: object-internal
+  host_role: none
+```
+
+**SCXQ2-IA/1** is the inference law.
+**SCXQ7** is sovereignty + execution law.
+**SCO/1** is containment + authority.
+
+---
+
+## SMCA/1 (Semantic Microcoded Architecture)
+
+SCXQ2 is microcode for MATRIX. MATRIX is the ISA. SCXQ7 is the firmware law.
+
+### Structural Identity
+
+* Symbols are μ-ops (atomic, legal, schedulable semantic actions).
+* Compression is μ-op fusion (removing pipeline bubbles).
+* The interpreter is a microsequencer (FETCH → DECODE → EXECUTE → WRITEBACK).
+
+### Microcode Parallel (Illustrative)
+
+```
+@cpu.architecture.1970
+  @microcode.layer
+    instruction: "ADD R1, R2"
+    micro_ops:
+      1. MAR ← PC
+      2. MDR ← MEM[MAR]
+      3. IR ← MDR
+      4. DECODE
+      5. ALU ← R1
+      6. ALU ← R2
+      7. R1 ← ALU.result
+
+@what.we.did.2024
+  instruction: "? @user < premium : @allow"
+  micro_ops:
+    1. ? = IF_START
+    2. @ = LOAD_CONTEXT
+    3. user = VARIABLE_LOOKUP
+    4. < = MEMBERSHIP_TEST
+    5. premium = CONSTANT_LOOKUP
+    6. : = ELSE_BRANCH
+    7. @allow = EXECUTE_FUNCTION
+```
+
+### SMCA/1 Type
+
+```
+@type SMCA/1
+  isa: SCXQ2
+  microcode: symbolic
+  execution: semantic
+  substrate: compressed symbols
+```
+
+### Stack Alignment
+
+* MATRIX → high-level language / macro-ISA
+* SCXQ2 → semantic microcode ISA
+* SCXQ7 → firmware law + control store
+* SCO/1 → complete microprogrammed machine
+
+---
+
+## SCXQ2-TRACE/1 (Inference Trace Format)
+
+SCXQ2-TRACE/1 is a deterministic, replayable, compressed record of inference execution inside an SCO/1.
+
+* Append-only
+* Symbolic (μ-ops, not prose)
+* Compression-native
+* Hash-chain verifiable
+* Projection-agnostic
+
+### Trace Envelope
+
+```json
+{
+  "@schema": "scxq2://trace/v1",
+  "trace_id": "trace-<hash>",
+  "sco_id": "SCO/<id>",
+  "kernel": "SCXQ7_KERNEL_LAW.v1",
+  "ia": "SCXQ2-IA/1",
+  "mode": "deterministic",
+  "encoding": "scxq2-symbolic",
+  "compression": "native",
+  "hash_chain": "enabled"
+}
+```
+
+### Trace Entry (Atomic Unit)
+
+Each entry is one inference step.
+
+```json
+{
+  "t": 184,
+  "ctx": "@π",
+  "op": "?",
+  "in": ["@user<premium"],
+  "out": ["@allow"],
+  "state": "Δs3",
+  "h": "b91e…"
+}
+```
+
+### Rules (Normative)
+
+* `t` strictly increases
+* `ctx` ∈ declared execution domains
+* `op` ∈ symbol dictionary
+* `state` is delta-only
+* `h` binds the chain (tamper-evident)
+
+### Trace Semantics
+
+* A trace is sufficient to replay inference
+* A trace is insufficient to extend authority
+* A trace may be projected, never executed
+
+---
+
+## SVG3D-TENSOR/SCXQ2-BINDING/1 (Non-Visual Tensor Substrate)
+
+This binding is computational, not representational. SVG is used for structure, adjacency, and constraint.
+
+### SVG-3D Tensor Encoding
+
+```xml
+<svg3d:tensor id="belief_state">
+  <node id="A" weight="0.82"/>
+  <node id="B" weight="0.13"/>
+  <edge from="A" to="B" constraint="inhibitory"/>
+  <group domain="@π"/>
+</svg3d:tensor>
+```
+
+### Semantics
+
+* `<node>` → symbolic variable / belief
+* `weight` → scalar or vector (compressed)
+* `<edge>` → inference dependency
+* `constraint` → legal relation
+* `domain` → execution jurisdiction
+
+No pixels. No rendering. This is geometry as state.
+
+### SCXQ2 μ-ops → Tensor Mutations
+
+| μ-op | Effect on SVG-3D Tensor |
+| ---- | ----------------------- |
+| `?`  | branch along edges      |
+| `&`  | intersect node sets     |
+| `|`  | union node sets         |
+| `@∇` | adjust node weights     |
+| `@∑` | aggregate subgraphs     |
+| `@λ` | transform group         |
+
+**Critical rule:** μ-ops mutate geometry, not arrays.
+
+---
+
+## SCO-LEARN/1 (Sealed Learning SCO)
+
+SCO-LEARN/1 is a sealed, lawful learning SCO that performs bounded updates.
+
+### Designation
+
+```
+SCO-LEARN/1
+Name: learner.s7
+Class: SCO/1
+Capability: bounded learning
+Status: sealed
+```
+
+### Learning SCO Structure (Collapsed)
+
+```
+[0–7]      MAGIC
+[8–63]     HEADER (symbols, domains)
+[64–255]   KERNEL (SCXQ7 v1)
+[256–511]  STATE (SVG-3D tensor, compressed)
+[512–767]  INFERENCE (SCXQ2 μ-ops)
+[768–895]  LEARNING RULES
+[896–1023] TRACE (append-only)
+```
+
+### Learning Rules (Normative)
+
+```json
+{
+  "@learning": {
+    "mode": "bounded",
+    "substrate": "svg3d-tensor",
+    "update": "@∇",
+    "constraints": [
+      "no new symbols",
+      "no kernel mutation",
+      "state-delta-only"
+    ],
+    "objective": "@∑ reward",
+    "persistence": "append-only"
+  }
+}
+```
+
+### What It Can Do
+
+* Update internal tensor weights
+* Adapt decisions over time
+* Improve inference outcomes
+
+### What It Can Never Do
+
+* Invent new μ-ops
+* Modify kernel law
+* Leak learning to host
+* Execute outside trace
+
+### Sealing Record
+
+```
+@seal learner.s7
+  sco_class: SCO/1
+  capability: learning
+  ia: SCXQ2-IA/1
+  tensor: SVG3D-TENSOR/1
+  trace: SCXQ2-TRACE/1
+  kernel: SCXQ7_KERNEL_LAW.v1
+```
+
+### Canonical Hash
+
+```
+SHA-256:
+9a7f3d2e6b1c4a9e8d0f7c2b6e1a4d9f3e7c8b0a1c6d5e9f2a4b7d8e1c0
+```
+
+---
+
 ## SCO/1 Verifier CLI (Frozen)
 
 A single-file verifier CLI is published as the authoritative SCO/1 mechanical gate.
