@@ -1,5 +1,8 @@
 # SMCAv1
 <img src=https://github.com/cannaseedus-bot/SCXQ7/blob/main/SMCA_1.png>
+## KUHUL Notes
+
+- [KUHUL: Simulator Boundary Notes](kuhul-simulator-boundary.md)
 ## SCXQ7: Executable Data Objects
 
 ```
