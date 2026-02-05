@@ -158,6 +158,52 @@ The causal-state extension defines stepwise validation, causal integrity, and no
     memory: "data stays compressed"
 ```
 
+## π-Adapter Interface (Invariant Seam)
+
+All model sources plug into the same seam and emit the same canonical geometry signal. The pipeline does not branch on model type, training source, or runtime location.
+
+```
+SignalEmitter → π-Adapter → SVG-Tensor → π-GCCP → object://retrieve/semantic.v1
+```
+
+### Canonical Adapter Output (Normative)
+
+```json
+{
+  "@type": "pi.signal.v1",
+  "geometry": {
+    "angles": [],
+    "magnitudes": [],
+    "paths": [],
+    "epsilon": 0.1745329
+  },
+  "provenance": {
+    "adapter": "string",
+    "deterministic": true
+  }
+}
+```
+
+### Plug-in Matrix (No Special Cases)
+
+| Source | What it emits | Adapter job | Result |
+| --- | --- | --- | --- |
+| GGUF | logits / embeddings | project → angles | SVG-Tensor |
+| ONNX | numeric tensors | normalize → phase | SVG-Tensor |
+| WebGPU | GPU buffers | reinterpret → geometry | SVG-Tensor |
+| WASM | arbitrary math | emit → angles | SVG-Tensor |
+
+### Adapter Notes
+
+* **GGUF** maps rank deltas to angular offsets, entropy to magnitude, and token identity to phase anchors without exposing token IDs upstream.
+* **ONNX** projects numeric tensors onto unit-circle phase pairs, with norms driving magnitudes.
+* **WebGPU** operates only on geometry buffers for projection and π-GCCP math, not model semantics.
+* **WASM** can participate as long as it emits the canonical geometry signal shape.
+
+### Retrieval Stability
+
+Once converted, π-GCCP consumes only angles, distances, phase differences, and interference. Retrieval is blind to model origin and runtime, and remains stable across CPU and GPU implementations.
+
 ## SCXQ7 vs SCXQ2
 
 ```
