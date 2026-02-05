@@ -1,5 +1,10 @@
 # SMCAv1
-<img src=https://github.com/cannaseedus-bot/SCXQ7/blob/main/SMCA_1.png>
+
+![SMCAv1 diagram](SMCA_1.png)
+
+Reference material for the SCXQ7/SMCA stack, including specs, examples, and
+supporting notes.
+
 ## KUHUL Notes
 
 - [KUHUL: Simulator Boundary Notes](docs/kuhul-simulator-boundary.md)
@@ -45,7 +50,10 @@
 
 ## SCXQ7: Stateful Causal Engine (CSE/1)
 
-The causal-state extension defines stepwise validation, causal integrity, and novelty-safe constraint expansion for SCXQ7 execution. See `docs/scxq7-causal-state-engine.md` for the full specification.【F:docs/scxq7-causal-state-engine.md†L1-L142】
+The causal-state extension defines stepwise validation, causal integrity, and
+novelty-safe constraint expansion for SCXQ7 execution. See
+[`docs/scxq7-causal-state-engine.md`](docs/scxq7-causal-state-engine.md) for the
+full specification.
 
 ## SCXQ7 File Ecosystem
 
@@ -738,7 +746,8 @@ Reality only changes when SCXQ7 says yes.**
 
 ## SCXQ2 Enhanced Inference Engine
 
-See the SCXQ2 inference engine compression reference in `docs/scxq2-inference-engine.md`.【F:docs/scxq2-inference-engine.md†L1-L299】
+See the SCXQ2 inference engine compression reference in
+[`docs/scxq2-inference-engine.md`](docs/scxq2-inference-engine.md).
 
 ## SCO/1 Formalization (Locked)
 
