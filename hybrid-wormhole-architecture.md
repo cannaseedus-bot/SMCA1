@@ -1,5 +1,77 @@
 # Hybrid Wormhole Architecture: The Tiered Control Plane
 
+## 0. Canonical SCXQ7 Alignment (Collapsed View)
+
+> **Hybrid Wormholes are the I/O nervous system of a sovereign causal kernel.**
+
+Hybrid Wormholes are **capability-scoped reality bridges**, not transports. They externalize SCXQ7’s internal separations across the network boundary:
+
+| Wormhole Layer          | SCXQ7 Meaning                           |
+| ----------------------- | --------------------------------------- |
+| **DNS / Discovery**     | *Capability topology* (what may exist)  |
+| **HTTP / Sync**         | *State alignment* (what is known)       |
+| **WebSocket / Runtime** | *Live causality* (what is happening)    |
+| **SCXQ2 / Proof**       | *Truth preservation* (what is provable) |
+
+This matches the internal separations of **state vs execution**, **proposal vs commit**, and **narration vs truth**, now expressed across wormhole boundaries.
+
+### Authority Boundaries (Locked)
+
+**SCXQ7 (Kernel / Micro-Atomics)**
+- Owns **truth** and **commit**.
+- Owns **CM-1**.
+- Emits **IDB.xml**.
+- Signs **SCXQ2 proofs**.
+- Decides **YES / NO**.
+
+**CM-1 (Control Micronauts)**
+- Exist **below all four layers**.
+- Shape interpretation **before parsing**.
+- Never cross network boundaries as authority.
+- May be referenced (hash/offset) in proofs.
+- Never visible to LLM or UI.
+
+**Hybrid Wormholes (I/O Plane)**
+- Transport **proposals, state, deltas, proofs**.
+- Perform **capability negotiation**.
+- Optimize **latency, battery, cost**.
+- Provide **defense in depth**.
+- Carry **no authority**.
+
+**LLM (Agent / Ramble Engine)**
+- Uses discovery results to reason.
+- Chooses strategies.
+- Explains protocol switches.
+- Narrates state transitions.
+- Proposes actions.
+- Never emits CM-1, never signs SCXQ2, never commits state.
+
+### Key Insight: Real-Time vs Truth-Time
+
+**WebSocket = fast, live, fallible.**  
+**SCXQ2 proof = slow, background, final.**
+
+External flow mirrors the SCXQ7 internal pipeline:
+
+| Internal      | External                 |
+| ------------- | ------------------------ |
+| Step proposal | WS / HTTP message        |
+| Validation    | Constraint + proof check |
+| Commit        | IDB append               |
+| Replay        | Proof verification       |
+
+Reality collapses **once**, even if DNS/HTTP/WS are noisy or adversarial.
+
+### Formal Name
+
+This architecture is a **Tiered Causal Transport Architecture (TCTA)** with **Hybrid Wormholes** as its concrete realization.
+
+### Final Seal
+
+> **Hybrid Wormholes move information.  
+> SCXQ7 decides reality.  
+> SCXQ2 proves it happened.**
+
 ## 1. Four-Layer Wormhole Stack
 
 ```asxr
