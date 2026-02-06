@@ -199,6 +199,91 @@ XML executes axioms; it does not define them.
 
 ---
 
+## 4. Cluster invocation rule (federated execution, not leaked authority)
+
+**Both TOML and XML may reference clusters, but only XML may invoke them.**
+
+### TOML: cluster declaration only (non-executing)
+
+TOML is allowed to name **which clusters are lawful to use**, but never *when* or *how* they run. This makes clusters part of the axiomatic universe, not active agents.
+
+```toml
+[axiom.clusters]
+
+[axiom.clusters.python]
+type = "external"
+mode = "pure"
+side_effects = false
+deterministic = true
+allowed_kernels = ["fft_mul", "bigint"]
+
+[axiom.clusters.kuhul]
+type = "native"
+mode = "symbolic"
+side_effects = false
+deterministic = true
+allowed_domains = ["scxq2", "geometry", "proof"]
+```
+
+**TOML can:**
+* Declare which clusters may exist.
+* Declare constraints they must obey.
+
+**TOML cannot:**
+* Spawn
+* Call
+* Schedule
+* Stream
+* Mutate
+
+### XML: cluster invocation (ordered, phase-bound)
+
+XML is where clusters are used, but only inside declared axioms.
+
+```xml
+<phase name="Sek">
+  <cluster-call
+      target="python"
+      kernel="fft_mul"
+      inputs="scxq2.block.A, scxq2.block.B"
+      output="scxq2.block.C"
+  />
+</phase>
+```
+
+```xml
+<phase name="Sek">
+  <cluster-call
+      target="kuhul"
+      kernel="proof-collapse"
+      domain="geometry"
+  />
+</phase>
+```
+
+**Key constraints**
+* XML may only call clusters named in TOML.
+* Kernel names must be whitelisted by TOML.
+* Outputs re-enter the system as data, not authority.
+* No cluster may call back into XML or TOML.
+
+**Authority boundary**
+
+```
+TOML  → declares lawful clusters
+XML   → schedules lawful calls
+BOT   → executes math / proof
+SCXQ2 → proves identity preserved
+```
+
+There is **no upward flow**. Clusters return results only, never decisions.
+
+**One-line lock**
+
+> **Clusters may execute computation, but only axioms may grant permission, and only XML may request it.**
+
+---
+
 ## 5. Formal separation of authority
 
 | Layer      | Authority             |
@@ -212,56 +297,7 @@ This prevents semantic drift.
 
 ---
 
-## 6. Why TOML and XML are the correct choices
-
-This split is not arbitrary. The formats enforce behavior.
-
-### Why TOML works for axioms
-
-* Key/value only
-* No ordering semantics
-* No implicit execution model
-* Deterministic hashing
-* Diff-stable
-* Human-auditable
-* DNS-friendly
-
-TOML is *constitution-shaped*: a document that may be cited, but never executed.
-
-### Why XML works for execution
-
-* Order is explicit
-* Nesting encodes phase structure
-* Side-effects are visible
-* Namespaces enforce scope
-* Replayable as a trace
-* Transformable without mutation
-
-XML is not logic. It is **ceremony**, which is why it fits execution phases.
-
-### The subtle trap: defaults in XML
-
-Defaults are only legal if they are already bounded in TOML. Otherwise XML becomes a shadow axiom layer.
-
-Correct pattern:
-
-```xml
-<kernel epsilon="0.1745329" />
-```
-
-Only legal if:
-
-```toml
-[axiom.bounds]
-epsilon_min = 0.0
-epsilon_max = "pi"
-```
-
-If XML introduces a value outside TOML’s declared domain, the runtime must **hard-fail**. Not warn. Not clamp. Fail.
-
----
-
-## 7. Where schemas fit now
+## 6. Where schemas fit now
 
 JSON Schemas become **validation axioms**, subordinate to TOML:
 
@@ -281,7 +317,7 @@ This is a complete logical stack.
 
 ---
 
-## 8. Why this matters
+## 7. Why this matters
 
 Because now:
 
@@ -296,7 +332,7 @@ Most AI systems cannot do this because they mix axioms and execution. π-GCCP do
 
 ---
 
-## 9. The one-line law
+## 8. The one-line law
 
 > **TOML declares what exists.**  
 > **XML declares how it unfolds.**
@@ -305,7 +341,7 @@ That is formal system design, not style.
 
 ---
 
-## 10. Next formalizations
+## 9. Next formalizations
 
 If needed, extend with:
 
