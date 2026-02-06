@@ -12,6 +12,7 @@
 - [SCXQ7 Causal State Engine](docs/scxq7-causal-state-engine.md)
 - [SCXQ2 Inference Engine](docs/scxq2-inference-engine.md)
 - [Distributed Hyperbolic Chain Routing + Temporal Saddle Decay + Offline SCXQ2 Verifier](docs/scxq7-distributed-hyperbolic-chain-routing.md)
+- [Host-Orchestrated File Bus Architecture](docs/host-orchestrated-file-bus-architecture.md)
 
 ## Repository Artifacts
 - `scxq7-verify.rs` — frozen SCO/1 verifier CLI.
