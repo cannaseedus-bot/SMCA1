@@ -12,6 +12,7 @@ supporting notes.
 - [π-Adapter Interface v1 (Locked)](docs/pi-adapter-interface-v1.md)
 - [Central Binomial Series Identity (π + 3)](docs/pi-series-identity.md)
 - [WORMHOLE-SPEC v1 (Locked)](docs/wormhole-spec-v1.md)
+- [Distributed Hyperbolic Chain Routing + Temporal Saddle Decay + Offline SCXQ2 Verifier](docs/scxq7-distributed-hyperbolic-chain-routing.md)
 ## SCXQ7: Executable Data Objects
 
 ```
