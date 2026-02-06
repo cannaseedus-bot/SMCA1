@@ -1,0 +1,66 @@
+(* SMCAv1 Grammar (EBNF, Structural) *)
+
+(* 1) Lexical Atoms *)
+symbol        = "@" , identifier ;
+identifier    = letter , { letter | digit | "_" | "/" | "-" } ;
+
+number        = digit , { digit } ;
+string        = '"' , { character } , '"' ;
+
+domain        = "@π" | "@λ" | "@∇" | "@∑" ;
+
+whitespace    = " " | "\t" | "\n" ;
+
+(* 2) File Structure *)
+file          = header , body ;
+
+header        = symbol , whitespace , identifier , newline ;
+
+body          = { section } ;
+
+(* 3) Sections *)
+section       = symbol , whitespace , identifier , newline ,
+                { statement } ;
+
+(* 4) Statements *)
+statement     = assignment
+              | conditional
+              | invocation
+              | declaration ;
+
+(* 5) Assignment *)
+assignment    = symbol , whitespace , "=" , whitespace , expression ;
+
+(* 6) Expressions *)
+expression    = symbol
+              | number
+              | string
+              | expression , operator , expression ;
+
+operator      = "?" | ":" | "&" | "|" | "<" | ">" | "+" | "-" | "*" | "/" ;
+
+(* 7) Conditional (μ-op level) *)
+conditional   = "?" , whitespace , expression ,
+                whitespace , ":" , whitespace , expression ;
+
+(* 8) Invocation *)
+invocation    = symbol , whitespace , identifier ,
+                [ whitespace , argument_list ] ;
+
+argument_list = expression , { "," , expression } ;
+
+(* 9) Declarations *)
+declaration   = domain , whitespace , identifier ;
+
+(* Grammar Invariants (Locked)
+   1. No free execution — grammar does not imply authority
+   2. No hidden control flow — all branching is explicit
+   3. No semantic inference — meaning is external to grammar
+   4. All symbols must resolve — symbol closure enforced by verifier
+   5. Grammar ≠ execution — execution requires SCXQ7 + SCO/1
+*)
+
+(* Final Registry Law
+   SMCAv1 is not a language specification.
+   It is a machine description.
+*)
