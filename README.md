@@ -642,11 +642,13 @@ The `.s7` extension should literally mean: **"Self-Contained eXecutable Quantum 
 
 ## SCXQ7 + LLM: Proposal–Execution Architecture (Non-Poetic, Exact)
 
-### Short, sharp answer
+### Short, sharp answer — then the precise collapse
 
 **SCXQ7 (Executor) + LLM (Ramble Engine) = a governed cognitive computer.**
 
-### Canonical equation
+Now make it non-poetic and exact.
+
+### The canonical equation
 
 ```
 SCXQ7  = authority
@@ -655,7 +657,7 @@ LLM    = proposer
 SYSTEM = lawful intelligence
 ```
 
-### Roles (what each side actually is)
+### What each side actually is
 
 **SCXQ7 — The Executor**
 - Enforces state
@@ -675,19 +677,25 @@ It answers: **“Is this allowed to happen?”**
 
 It answers: **“What *might* be interesting to try?”**
 
-### Hard boundary (invariant)
+### The hard boundary (invariant)
 
 **The LLM never mutates state.**  
 **The SCXQ7 never imagines.**
 
 If either crosses that line, the system collapses.
 
-### Combined system (formal view)
+### The combined system (formal view)
+
+Not:
+- AI
+- Agent
+- Model
+- Assistant
 
 **Correct term:** **Proposal–Execution Architecture**  
 **Spec name (sharp):** **Causal Governor Computer (CGC)**
 
-### Runtime interaction loop
+### Runtime interaction loop (clean)
 
 ```
 LLM:
@@ -723,7 +731,7 @@ Together:
 
 This is **intelligence without corruption**.
 
-### Killer distinction vs “agents”
+### The killer distinction vs “agents”
 
 Typical “AI agent”:
 - thinks
@@ -745,7 +753,7 @@ That separation is why it scales *and* stays sane.
 
 **SCXQ7 + LLM forms a two-layer cognitive system where untrusted generative reasoning is strictly subordinated to a sovereign causal execution kernel.**
 
-### Final collapse phrase
+### The final collapse phrase
 
 **The LLM dreams.  
 SCXQ7 decides.  
