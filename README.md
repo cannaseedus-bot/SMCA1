@@ -20,7 +20,9 @@ supporting notes.
 - [Proposal → Control → Execution Pipeline (Frozen v1)](docs/proposal-control-execution-pipeline-frozen-v1.md)
 - [CM-1 Control Micronaut Spec — Draft-Frozen v1](docs/cm-1-control-micronaut-spec-draft-frozen-v1.md)
 - [CM-1 Verifier CLI (Reference)](docs/cm-1-verifier-cli.md)
+- [CM-1 Verifier Binaries v1.0 (Frozen)](docs/cm-1-verifier-binaries-v1.md)
 - [PowerShell Reference Orchestrator (Locked)](docs/powershell-reference-orchestrator-outline.md)
+- [PowerShell Loopback REST Reference (Frozen)](docs/powershell-loopback-rest-reference.md)
 ## SCXQ7: Executable Data Objects
 
 ```
