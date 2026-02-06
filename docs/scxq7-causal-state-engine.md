@@ -10,6 +10,12 @@ constraint expansion.
 @π scxq7.kernel.extended
   # Extend the 256-byte kernel with causality laws
 
+  @law_0: NO IMPLICIT TRANSITION (64 bytes)
+    "No state change may occur without an explicit causal step"
+    "Computation does not imply mutation"
+    "Proposal is not commitment"
+    "Hidden transitions are illegal"
+
   @law_4: STATEFUL EXECUTION (64 bytes)
     "All execution proceeds from explicit state"
     "State transitions are causal steps"
