@@ -1,6 +1,8 @@
-﻿# PowerShell Reference Orchestrator — Implementation Outline (Draft)
+﻿# PowerShell Reference Orchestrator — Implementation Outline (Locked)
 
 > Purpose: A minimal, deterministic, PowerShell-based orchestrator that implements the **Process Lifecycle Contracts** and **append-only file substrate** described in the frozen CHAT I/O SUBSTRATE v1 specification. This document is an implementation outline, not an authority expansion.
+
+**Lock Declaration:** This outline is now locked as the reference target for the PowerShell orchestrator. No authority expansion; only clarifications or defect fixes are permitted.
 
 ---
 
