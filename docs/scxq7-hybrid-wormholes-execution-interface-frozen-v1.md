@@ -1,3 +1,9 @@
+Locked. Below is a **single, cohesive, law-grade package** that seals all four items so they compose **without ambiguity** and **without granting authority to transport, agents, or narration**.
+
+Everything here is **executor-centric** and **replay-safe**.
+
+---
+
 # 🔒 SCXQ7 × HYBRID WORMHOLES — EXECUTION INTERFACE (FROZEN v1)
 
 This document **freezes**:
