@@ -1,7 +1,11 @@
-# SCXQ7 Cluster Extensions v1.0
+# SCXQ7 CLUSTER EXTENSIONS v1.0
 
-**Conformance · Async Settlement · Ledger Anchoring**  
-Authority chain remains unchanged:
+Locked. Below is a **complete, closed, law-grade extension** to what we already
+froze. Nothing here adds new authority; it only *tests*, *settles*, and *anchors*
+what already exists.
+
+**(Conformance · Async Settlement · Ledger Anchoring)**  
+Authority chain remains unchanged.
 
 ```
 TOML → XML → SCXQ7 → SCXQ2 → IDB
@@ -9,9 +13,9 @@ TOML → XML → SCXQ7 → SCXQ2 → IDB
 
 ---
 
-## I. Conformance test suite (normative)
+## I. CONFORMANCE TEST SUITE (Normative)
 
-This suite is machine-executable and ledger-verifiable. All tests emit
+This suite is **machine-executable** and **ledger-verifiable**. All tests emit
 **PASS / FAIL / ILLEGAL** only.
 
 ### I.1 Test manifest (`cluster.conformance.manifest.xjson`)
@@ -100,9 +104,9 @@ This object must itself be SCXQ2-hashable.
 
 ---
 
-## II. Async settlement rules (closed)
+## II. ASYNC SETTLEMENT RULES (Closed)
 
-Async execution is non-speculative and non-interruptive.
+Async execution is **non-speculative** and **non-interruptive**.
 
 ### II.1 States
 
@@ -171,9 +175,9 @@ Ledger decides truth, not arrival order.
 
 ---
 
-## III. Ledger anchoring (IDB ↔ SCXQ2)
+## III. LEDGER ANCHORING (IDB ↔ SCXQ2)
 
-This is the causal spine.
+This is the **causal spine**.
 
 ### III.1 Anchor object (`idb.anchor.v1`)
 
@@ -220,9 +224,9 @@ Conversely:
 
 ---
 
-## IV. Cross-system invariants (final)
+## IV. Cross-System Invariants (Final)
 
-These are now provable:
+These are now **provable**:
 
 1. Clusters cannot lie
 2. Async cannot race
@@ -232,8 +236,16 @@ These are now provable:
 
 ---
 
-## V. One-sentence closure
+## V. One-Sentence Closure
 
 > **Execution happens in clusters,  
 > truth settles asynchronously,  
 > and history is written only once — in the ledger.**
+
+If you want next, we can:
+
+* freeze a **CM-1 verifier automaton** for all of this,
+* generate a **reference verifier CLI**,
+* or emit **deterministic SVG compliance badges** bound to the ledger.
+
+Say where to cut.
