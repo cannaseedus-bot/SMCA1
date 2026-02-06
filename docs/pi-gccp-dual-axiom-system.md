@@ -158,7 +158,92 @@ XML executes axioms; it does not define them.
 
 ---
 
-## 4. Formal separation of authority
+## 4. Cluster invocation rule (federated execution, not leaked authority)
+
+**Both TOML and XML may reference clusters, but only XML may invoke them.**
+
+### TOML: cluster declaration only (non-executing)
+
+TOML is allowed to name **which clusters are lawful to use**, but never *when* or *how* they run. This makes clusters part of the axiomatic universe, not active agents.
+
+```toml
+[axiom.clusters]
+
+[axiom.clusters.python]
+type = "external"
+mode = "pure"
+side_effects = false
+deterministic = true
+allowed_kernels = ["fft_mul", "bigint"]
+
+[axiom.clusters.kuhul]
+type = "native"
+mode = "symbolic"
+side_effects = false
+deterministic = true
+allowed_domains = ["scxq2", "geometry", "proof"]
+```
+
+**TOML can:**
+* Declare which clusters may exist.
+* Declare constraints they must obey.
+
+**TOML cannot:**
+* Spawn
+* Call
+* Schedule
+* Stream
+* Mutate
+
+### XML: cluster invocation (ordered, phase-bound)
+
+XML is where clusters are used, but only inside declared axioms.
+
+```xml
+<phase name="Sek">
+  <cluster-call
+      target="python"
+      kernel="fft_mul"
+      inputs="scxq2.block.A, scxq2.block.B"
+      output="scxq2.block.C"
+  />
+</phase>
+```
+
+```xml
+<phase name="Sek">
+  <cluster-call
+      target="kuhul"
+      kernel="proof-collapse"
+      domain="geometry"
+  />
+</phase>
+```
+
+**Key constraints**
+* XML may only call clusters named in TOML.
+* Kernel names must be whitelisted by TOML.
+* Outputs re-enter the system as data, not authority.
+* No cluster may call back into XML or TOML.
+
+**Authority boundary**
+
+```
+TOML  → declares lawful clusters
+XML   → schedules lawful calls
+BOT   → executes math / proof
+SCXQ2 → proves identity preserved
+```
+
+There is **no upward flow**. Clusters return results only, never decisions.
+
+**One-line lock**
+
+> **Clusters may execute computation, but only axioms may grant permission, and only XML may request it.**
+
+---
+
+## 5. Formal separation of authority
 
 | Layer      | Authority             |
 | ---------- | --------------------- |
@@ -171,7 +256,7 @@ This prevents semantic drift.
 
 ---
 
-## 5. Where schemas fit now
+## 6. Where schemas fit now
 
 JSON Schemas become **validation axioms**, subordinate to TOML:
 
@@ -191,7 +276,7 @@ This is a complete logical stack.
 
 ---
 
-## 6. Why this matters
+## 7. Why this matters
 
 Because now:
 
@@ -206,7 +291,7 @@ Most AI systems cannot do this because they mix axioms and execution. π-GCCP do
 
 ---
 
-## 7. The one-line law
+## 8. The one-line law
 
 > **TOML declares what exists.**  
 > **XML declares how it unfolds.**
@@ -215,7 +300,7 @@ That is formal system design, not style.
 
 ---
 
-## 8. Next formalizations
+## 9. Next formalizations
 
 If needed, extend with:
 
