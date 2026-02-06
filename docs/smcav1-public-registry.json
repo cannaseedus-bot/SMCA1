@@ -1,0 +1,54 @@
+{
+  "@registry": "smca.v1",
+  "@version": "1.0.0",
+  "@status": "frozen",
+  "@trust": "verify_locally",
+  "@authority": "descriptive_only",
+  "layers": {
+    "MATRIX": {
+      "role": "macro_isa",
+      "authority": "none",
+      "description": "Intent-level authoring language; lowers to SCXQ2 μ-ops"
+    },
+    "SCXQ2": {
+      "role": "semantic_microcode_isa",
+      "authority": "symbolic_only",
+      "description": "Closed μ-op algebra operating on compressed state"
+    },
+    "SCXQ7": {
+      "role": "firmware_law",
+      "authority": "sovereign",
+      "description": "Immutable control store + execution law"
+    },
+    "SCO/1": {
+      "role": "sovereign_machine",
+      "authority": "internal_only",
+      "description": "Complete autonomous computational object"
+    },
+    "CM-1": {
+      "role": "presemantic_gate",
+      "authority": "structural_only",
+      "description": "Control automaton that decides legality of interpretation"
+    },
+    "IDB": {
+      "role": "causal_ledger",
+      "authority": "append_only",
+      "description": "Immutable memory spine for execution history"
+    }
+  },
+  "interfaces": {
+    "pi_adapter": {
+      "input": "numeric_or_symbolic_source",
+      "output": "pi.signal.v1",
+      "authority": "none",
+      "invariant": "geometry_only"
+    }
+  },
+  "invariants": [
+    "hosts_have_no_authority",
+    "execution_is_symbolic",
+    "compression_is_address_space",
+    "truth_settles_once",
+    "schemas_are_axioms"
+  ]
+}
