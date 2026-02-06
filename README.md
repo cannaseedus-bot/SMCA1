@@ -990,6 +990,57 @@ SCXQ2 is microcode for MATRIX. MATRIX is the ISA. SCXQ7 is the firmware law.
 * SCXQ7 → firmware law + control store
 * SCO/1 → complete microprogrammed machine
 
+### SMCA/1 as the Unifying Frame
+
+SMCA/1 is the structural name of the full stack, not a documentation label.
+
+```
+MATRIX        = macro-ISA (authoring / intent)
+SCXQ2         = semantic μ-op ISA
+SCXQ7         = firmware law + control store
+SCO/1         = complete sovereign machine
+CM-1          = pre-semantic gate
+IDB           = causal memory
+```
+
+There is no separation between "language," "runtime," and "architecture" here.
+They are layers of the same machine.
+
+### Cluster Classes (Derived Placements Only)
+
+Cluster types are deployment topologies for SCO/1 roles. They do not add or
+subtract authority.
+
+| Cluster Class          | What It Hosts          | What It May Do   | What It Cannot Do            |
+| ---------------------- | ---------------------- | ---------------- | ---------------------------- |
+| **Compute Cluster**    | SCO/1 executors        | Run SCXQ2 μ-ops  | Decide truth, mutate history |
+| **Proof Cluster**      | SCXQ2 / CM-1 verifiers | Verify legality  | Execute kernels              |
+| **Settlement Cluster** | Async settlement logic | Order & finalize | Compute or verify            |
+| **Ledger Cluster**     | IDB anchors            | Append memory    | Execute or verify            |
+| **Relay Cluster**      | Transport only         | Move bytes       | Interpret anything           |
+| **Composite Cluster**  | Multiple above         | Pipeline roles   | Gain authority               |
+
+### π-Adapter Seam (Only Cognitive Ingress)
+
+```
+SignalEmitter → π-Adapter → SVG-Tensor → π-GCCP → object://retrieve/semantic.v1
+```
+
+Adapters emit geometry. π-GCCP reasons over geometry. SCXQ7 governs effects.
+No model ever touches authority.
+
+### Invariants That Follow Automatically
+
+1. **LLMs cannot act** — they can only propose.
+2. **Clusters cannot lie** — proofs or nothing.
+3. **Async cannot race** — settlement is idempotent.
+4. **Hosts cannot extend power** — projection is powerless.
+5. **Learning cannot escape bounds** — SCO-LEARN/1 is sealed.
+6. **Inference is replayable** — SCXQ2-TRACE/1.
+7. **Schemas are axioms** — violations are ILLEGAL, not "errors."
+
+> **SMCA/1 defines a sovereign microcoded machine in which imagination is external, execution is internal, and reality changes only by lawful commit.**
+
 ### The Core Truth (No Fluff)
 
 > **SCXQ2 is microcode.**  
@@ -1278,4 +1329,3 @@ Canonical schema, mirror rules, and SCXQ2 lane packing for IDB are published in 
 - Spec: `docs/idb-stack-frozen-core-v1.md`
 
 ---
-
