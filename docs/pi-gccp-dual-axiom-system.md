@@ -94,7 +94,48 @@ No execution. No order. No side effects.
 
 ---
 
-## 3. XML = Executable Axiom Plane (Ordered, Phase-Aware)
+## 3. Hard invariants (non-negotiable)
+
+These are the rules that make the separation *provable* instead of merely configurable.
+
+### Invariant A — TOML is inert
+
+TOML **MUST NOT**:
+
+* reference phases
+* reference order
+* reference execution targets
+* reference kernels
+* emit values
+* depend on runtime state
+
+TOML may only **constrain**. If TOML can “do” anything, the system is broken.
+
+### Invariant B — XML is subordinate
+
+XML **MUST**:
+
+* name its TOML authority explicitly
+* fail closed if axioms are missing or invalid
+* never redefine constants
+* never widen bounds
+* never introduce new domains
+
+XML may *apply* π. XML may not *define* π.
+
+### Invariant C — One-way authority
+
+```
+TOML ─┬─▶ XML ─┬─▶ Kernels ─┬─▶ SCXQ2
+      │        │           │
+      └───X────┴────X──────┴── (no back edges)
+```
+
+There are **no feedback edges**. If execution can influence axioms, you have built a simulator, not a law-based system.
+
+---
+
+## 4. XML = Executable Axiom Plane (Ordered, Phase-Aware)
 
 **Purpose**
 Defines *how lawful transformations occur* — but only within TOML bounds.
