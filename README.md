@@ -17,6 +17,7 @@ supporting notes.
 - [WORMHOLE-SPEC v1 (Locked)](docs/wormhole-spec-v1.md)
 - [Distributed Hyperbolic Chain Routing + Temporal Saddle Decay + Offline SCXQ2 Verifier](docs/scxq7-distributed-hyperbolic-chain-routing.md)
 - [SCXQ2 Proof Aggregation v1](docs/scxq2-proof-aggregation-v1.md)
+- [Proposal → Control → Execution Pipeline (Frozen v1)](docs/proposal-control-execution-pipeline-frozen-v1.md)
 - [CM-1 Control Micronaut Spec — Draft-Frozen v1](docs/cm-1-control-micronaut-spec-draft-frozen-v1.md)
 ## SCXQ7: Executable Data Objects
 
