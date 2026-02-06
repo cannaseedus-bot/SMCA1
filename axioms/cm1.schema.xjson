@@ -1,0 +1,7 @@
+{
+  "@schema": "scxq7://axiom/schema/v1",
+  "name": "cm1.schema.xjson",
+  "version": "v1",
+  "authority": "none",
+  "deterministic": true
+}
