@@ -859,6 +859,11 @@ It certifies **lawfulness**, nothing else.
 
 ---
 
+## Verified Manifests & Compliance Badges (Frozen v1)
+
+See the verified manifest and compliance badge specification in
+[`docs/verified-manifests-compliance-badges-frozen-v1.md`](docs/verified-manifests-compliance-badges-frozen-v1.md).
+
 ## Kernel Freeze (Checksum)
 
 ### Artifact Name
