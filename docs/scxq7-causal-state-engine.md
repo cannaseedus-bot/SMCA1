@@ -154,6 +154,65 @@ This document captures the SCXQ7 causal-state extension: a stepwise, validated e
     recovery_time: O(log steps) via DAG
 ```
 
+## Tri-Modal Equivalence (OS / DB / Ledger)
+
+SCXQ7-CSE is not merely analogous to an operating system, database engine, or ledger—it is structurally equivalent to all three simultaneously. Each step is a verified syscall, a committed transaction, and an auditable ledger entry.
+
+### SCXQ7 ⇄ Operating System Kernel
+
+| OS Kernel Concept | SCXQ7 Construct                     |
+| ----------------- | ----------------------------------- |
+| Process state     | `State.current (CompressedHeap)`    |
+| Syscall           | `input = await_next_event()`        |
+| Kernel mode       | `@law_* (immutable kernel laws)`    |
+| User mode         | `.s7 domain execution`              |
+| Scheduler         | `enforced step timing`              |
+| Context switch    | `Step.lifecycle (RECEIVE → COMMIT)` |
+| Fault handling    | `handle_constraint_violation()`     |
+| Kernel panic      | **Impossible** (state preserved)    |
+| Replay / resume   | `causal_dag.replay()`               |
+
+**Key equivalence:** SCXQ7 is an OS kernel where every instruction is a verified syscall, and illegal transitions do not commit.
+
+### SCXQ7 ⇄ Database Engine (ACID+++)
+
+| DB Property     | SCXQ7 Mechanism                      |
+| --------------- | ------------------------------------ |
+| Atomicity       | Step commit is all-or-nothing        |
+| Consistency     | Constraint validation before & after |
+| Isolation       | Single-step execution, no races      |
+| Durability      | Append-only Causal DAG               |
+| Transactions    | `Step`                               |
+| Write-ahead log | `CausalDAG`                          |
+| Snapshot        | `State.current`                      |
+| Rollback        | Replay from last valid node          |
+| Schema          | ConstraintSet                        |
+| Migration       | Safe constraint expansion            |
+
+**Key equivalence:** Every SCXQ7 step is a transaction with a proof attached—ACID with explicit causality.
+
+### SCXQ7 ⇄ Cryptographic / Financial Ledger
+
+| Ledger Concept          | SCXQ7 Mechanism         |
+| ----------------------- | ----------------------- |
+| Block                   | `CausalStep`            |
+| Chain                   | `CausalDAG`             |
+| Transaction             | `input + state_delta`   |
+| Validation              | `Proof`                 |
+| Consensus               | Constraint satisfaction |
+| Finality                | Commit                  |
+| Fork resolution         | DAG replay rules        |
+| Audit trail             | `trace_path()`          |
+| Double-spend prevention | State invariants        |
+
+**Critical insight:** SCXQ7 does not require external consensus because there is a single lawful executor and time is logical, not wall-clock. It behaves as a sovereign ledger with deterministic finality.
+
+### The Unification
+
+All three systems answer the same question: **Is this state change allowed, and can we prove it later?** SCXQ7 answers that question at every step, making execution, state, and history inseparable.
+
+> **Formal definition:** SCXQ7 is a sovereign causal kernel that unifies operating system execution, database transactionality, and ledger-grade auditability into a single stepwise state machine.
+
 ## Manifesto (Causal, Stateful, Slow)
 
 ```
