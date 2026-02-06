@@ -157,7 +157,58 @@ via residue summation.
 
 ---
 
-## 6) π-GCCP theorem block (normative)
+## 6) Binary splitting for fast evaluation
+
+The summand is hypergeometric, so it is well-suited to binary splitting. Write
+\[
+T_k = k\,\frac{2^k}{\binom{2k}{k}}
+     = k\,\frac{2^k(k!)^2}{(2k)!}.
+\]
+The term ratio is
+\[
+\frac{T_k}{T_{k-1}}
+ = \frac{k}{k-1}\cdot 2\cdot
+   \frac{\binom{2k-2}{k-1}}{\binom{2k}{k}}
+ = \frac{k^2}{(k-1)(2k-1)},
+ \quad k\ge 2,
+\]
+with base value \(T_1=1\).
+
+To keep everything integer during recursion, define
+\[
+T_k = \frac{N_k}{D_k},\qquad
+N_k=\prod_{j=2}^k j^2,\quad
+D_k=\prod_{j=2}^k (j-1)(2j-1),
+\]
+with \(N_1=D_1=1\). These satisfy the same ratio above, so \(T_k\) can be
+built without factorials or division.
+
+Binary splitting combines numerators and denominators without repeated
+division. For an interval \([a,b)\), define integers \(P(a,b)\), \(Q(a,b)\) so
+that
+\[
+\sum_{k=a}^{b-1} T_k = \frac{P(a,b)}{Q(a,b)}.
+\]
+For a split point \(m=\lfloor(a+b)/2\rfloor\),
+\[
+P(a,b)=P(a,m)\,Q(m,b)+P(m,b)\,Q(a,m),\qquad
+Q(a,b)=Q(a,m)\,Q(m,b),
+\]
+and for a single term, set \(P(k,k+1)=N_k\), \(Q(k,k+1)=D_k\).
+Implementation-friendly variants store range products,
+\[
+N(a,b)=\prod_{j=a+1}^{b-1} j^2,\quad
+D(a,b)=\prod_{j=a+1}^{b-1} (j-1)(2j-1),
+\]
+to balance memory and keep all intermediate values as integers.
+
+This approach shifts the cost to big-integer multiplication (which can use
+FFT-based methods) and delays division until the final step, giving a large
+speedup over naive per-term evaluation at high precision.
+
+---
+
+## 7) π-GCCP theorem block (normative)
 
 This theorem object is the **locked law** for the half-turn collapse. It does not compute the
 series; it defines the invariant the kernel must obey.
