@@ -13,6 +13,7 @@ supporting notes.
 - [External Model Adapters v1 (Emitters Only)](docs/external-model-adapters-v1.md)
 - [Central Binomial Series Identity (π + 3)](docs/pi-series-identity.md)
 - [π-GCCP Hyperbolic Chaining v1 (Frozen)](docs/pi-gccp-hyperbolic-chaining-v1.md)
+- [ASX / π-GCCP Foundational Axioms v1.0](docs/asx-pi-gccp-foundational-axioms-v1.md)
 - [WORMHOLE-SPEC v1 (Locked)](docs/wormhole-spec-v1.md)
 - [SCXQ2 Proof Aggregation v1](docs/scxq2-proof-aggregation-v1.md)
 ## SCXQ7: Executable Data Objects
