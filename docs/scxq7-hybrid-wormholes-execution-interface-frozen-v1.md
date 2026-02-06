@@ -217,15 +217,26 @@ Failure in any → **step aborted, state preserved**
 
 ### Failure Output (Kernel Speech)
 
-SCXQ7 outputs **only**:
+SCXQ7 outputs **only** one of two forms:
 
-```json
-{
-  "@result": "REJECT",
-  "reason": "ANCHOR_MISMATCH",
-  "preserved_state": "H_STATE_41",
-  "trace_ref": "TRACE_88A"
-}
+1) **Binary authority**
+
+```
+YES | NO
+1   | 0
+TRUE| FALSE
+COMMIT | REJECT
+```
+
+2) **Proof objects / geometry / traces**
+
+```
+@proof.anchor_mismatch
+  invariant: "kernel_hash == H₀"
+  observed:  "kernel_hash == H₁"
+  Δstate: "H_STATE_41 → H_STATE_41"
+  trace_ref: "TRACE_88A"
+  hash: "b91e…"
 ```
 
 No apology.
@@ -233,7 +244,7 @@ No explanation.
 No retry instruction.
 
 The **LLM may explain**.
-The kernel **only refuses**.
+The kernel **only commits or refuses**.
 
 ---
 
