@@ -19,6 +19,7 @@ supporting notes.
 - [SCXQ2 Proof Aggregation v1](docs/scxq2-proof-aggregation-v1.md)
 - [Proposal → Control → Execution Pipeline (Frozen v1)](docs/proposal-control-execution-pipeline-frozen-v1.md)
 - [CM-1 Control Micronaut Spec — Draft-Frozen v1](docs/cm-1-control-micronaut-spec-draft-frozen-v1.md)
+- [CM-1 Verifier CLI (Reference)](docs/cm-1-verifier-cli.md)
 ## SCXQ7: Executable Data Objects
 
 ```
