@@ -1,0 +1,9 @@
+{
+  "@type": "badge-schema",
+  "@version": "1.0.0",
+  "fields": {
+    "name": "string",
+    "hash": "string",
+    "issued": "rfc3339"
+  }
+}
