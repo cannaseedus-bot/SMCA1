@@ -161,7 +161,211 @@ Chudnovsky–Ramanujan formulas
 
 ---
 
-## II. Binary splitting as a canonical SCXQ7 microkernel
+## II. Closed pipeline map (symmetry → DE class → special value → kernel → lane microcode)
+
+This provides a **closed pipeline** that binds collapse geometry to evaluation kernels and the minimal lane microcode families that realize them.
+For the lane-level control surface, see the Control Micronaut spec (CM-1). This defines the pre-semantic control layer that frames microcode execution phases.【F:docs/cm-1-control-micronaut-spec-draft-frozen-v1.md†L1-L69】
+
+### A) SO(2) rotation symmetry
+
+**Symmetry:** SO(2)  
+**DE class:** harmonic / Sturm–Liouville on circle, inverse-trig DEs
+
+- \(y'' + y = 0\)  
+- \(y' = \frac{1}{1+x^2}\) for \(\arctan x\)
+
+**Special value form:** angles / arctan sums / Fourier boundary values  
+**Natural kernels:**
+
+- Power-series evaluation (Horner / rectangular splitting)
+- Machin linear-combo kernel (angle addition + cancellation)
+
+**Lane microcode family (conceptual):**
+
+- `ROT_SERIES_EVAL`
+- `ROT_COMBINE_ARCTAN`
+- `PERIOD_CLOSE_CHECK`
+
+---
+
+### B) Combinatorial / binomial / Catalan symmetry
+
+**Symmetry:** path algebras / discrete symmetries (not Lie)  
+**DE class:** Gauss hypergeometric ODE \({}_2F_1\) (and relatives)
+
+\[
+x(1-x)y'' + [c-(a+b+1)x]y' - aby = 0
+\]
+
+**Special value form:** hypergeometric at algebraic points (often maps to \(\arcsin\) / \(\pi\))  
+**Natural kernels:**
+
+- Binary splitting for rational/hypergeometric term series
+- Rectangular splitting for medium precision (optional)
+
+**Lane microcode family:**
+
+- `HYP_TERM(a,b,c,k)` (term law)
+- `BIN_SPLIT_INTERVAL`
+- `RATIONAL_MERGE`
+- `FINAL_PROJECT_DIV`
+
+---
+
+### C) Modular / elliptic (SL₂(ℤ)) symmetry
+
+**Symmetry:** modular group (SL\(_2(\mathbb{Z})\)) / elliptic curve symmetry  
+**DE class:** Picard–Fuchs (elliptic periods), MLDE
+
+**Special value form:** elliptic periods / CM points → \(1/\pi\) series  
+**Natural kernels (two major families):**
+
+1. AGM kernel (fast elliptic period computation)
+2. Binary splitting + FFT (modular/hypergeometric series like Chudnovsky)
+
+**Lane microcode family:**
+
+- `AGM_STEP` (a,b → (a+b)/2, sqrt(ab))
+- `PERIOD_NORMALIZE`
+- `MOD_PARAM_UPDATE`
+- `BIN_SPLIT_INTERVAL`
+- `BIGINT_MUL` / `FFT_MUL` (accelerators)
+
+---
+
+### D) Diophantine / integer-relation geometry
+
+**Symmetry:** lattices over \(\mathbb{Q}^n\) (relation space)  
+**DE class:** inherited from the constants involved (trig / hypergeo / modular)  
+**Special value form:** constant vector evaluated to high precision  
+**Natural kernels:**
+
+- PSLQ / LLL (integer relation discovery)
+- plus whichever evaluation kernel produced the constants
+
+**Lane microcode family:**
+
+- `CONST_EVAL_BATCH`
+- `PSLQ_STEP`
+- `RELATION_VERIFY`
+
+---
+
+## III. Kernel contracts as microcode families
+
+These are lawful reducers that assume minimal algebraic structure and compile cleanly to lane microcode.
+
+### Kernel K1: Binary splitting (hypergeometric / period series)
+
+**Input:** interval \([a,b)\), term law \(T_k\), merge law  
+**Output:** exact rational pair \((P,Q)\) (or structured triple, depending on series)
+
+**Contract:**
+
+- associative merge
+- exact arithmetic until final projection
+- subranges independent
+
+**Micro-ops:**
+
+- `SPLIT(a,b) -> (a,m),(m,b)`
+- `EVAL_TERM(k)`
+- `MERGE_RATIONAL((P1,Q1),(P2,Q2))`
+- `PROJECT(P,Q)`
+
+Shared by **combinatorial** and **modular-series** classes.
+
+---
+
+### Kernel K2: AGM (elliptic periods)
+
+**Input:** \((a_0,b_0)\)  
+**Output:** limit \(M(a_0,b_0)\) (mean) which yields elliptic integrals/periods
+
+**Contract:**
+
+- quadratic convergence
+- monotone bounds
+- deterministic iteration
+
+**Micro-ops:**
+
+- `MEAN(a,b) = (a+b)/2`
+- `GEOM(a,b) = sqrt(a*b)`
+- `AGM_STEP(a,b) -> (mean, geom)`
+- `STOP_IF_CLOSE(a,b,ε)`
+- `NORMALIZE_PERIOD(...)`
+
+Native to the **modular/elliptic** DE class.
+
+---
+
+### Kernel K3: Rotation combine (Machin/arctan)
+
+**Input:** list of \((c_i, x_i)\)  
+**Output:** \(\sum c_i \arctan(x_i)\)
+
+**Contract:**
+
+- stable series evaluation
+- deterministic combination
+- cancellation-controlled
+
+**Micro-ops:**
+
+- `ARCTAN_SERIES(x, n)`
+- `SCALE(c, value)`
+- `ADD(value1, value2)`
+- `REDUCE_MOD_PERIOD(2π)` (if used for angle normalization)
+
+Native to **SO(2)**.
+
+---
+
+### Kernel K4: PSLQ (relation discovery)
+
+**Input:** high-precision real vector \(v\)  
+**Output:** integer relation \(a\) such that \(a \cdot v \approx 0\)
+
+**Contract:**
+
+- exact integer outputs
+- verification required
+- precision threshold gating
+
+**Micro-ops:**
+
+- `REDUCE_BASIS`
+- `UPDATE_MATRIX`
+- `CHECK_RELATION`
+- `VERIFY_WITH_MORE_PRECISION`
+
+Native to **Diophantine** collapse.
+
+---
+
+## IV. Canonical pipeline tag schema
+
+```json
+{
+  "collapse_geometry": {
+    "symmetry_group": "SL2Z",
+    "de_class": "Picard-Fuchs | MLDE",
+    "special_value_form": "elliptic_period | modular_series",
+    "natural_kernel": ["AGM", "BIN_SPLIT", "FFT_MUL"],
+    "lane_microcode_family": [
+      "AGM_STEP",
+      "BIN_SPLIT_INTERVAL",
+      "RATIONAL_MERGE",
+      "PROJECT"
+    ]
+  }
+}
+```
+
+---
+
+## V. Binary splitting as a canonical SCXQ7 microkernel
 
 Binary splitting is **not** an optimization. It is a **lawful execution primitive**.
 
@@ -271,7 +475,7 @@ Everything else is *which geometry you feed into the same machine*.
 
 ---
 
-## III. Binary splitting vs. arctan formulas (computational DNA)
+## VI. Binary splitting vs. arctan formulas (computational DNA)
 
 The contrast between the central-binomial series and Machin/Arndt formulas is not
 just convergence speed. It is a **difference in collapse geometry** and, therefore,
