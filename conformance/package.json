@@ -1,0 +1,9 @@
+{
+  "name": "scxq7-conformance",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "conformance": "node run.js"
+  }
+}

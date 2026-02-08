@@ -1,0 +1,9 @@
+{
+  "@type": "cm1-profiles",
+  "@version": "1.0.0",
+  "profiles": {
+    "balanced_scope_single_collapse": {
+      "description": "Single-collapse scope with balanced evaluation window."
+    }
+  }
+}

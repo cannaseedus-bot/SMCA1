@@ -1,0 +1,9 @@
+{
+  "tests": [
+    {
+      "name": "cm1-always-accept",
+      "cm1": [0],
+      "expect": "ACCEPT"
+    }
+  ]
+}

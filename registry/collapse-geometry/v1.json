@@ -1,0 +1,48 @@
+{
+  "$schema": "xjson://schema/core/v1",
+  "@id": "schema://collapse.geometry.v1",
+  "@authority": "SMCA/1",
+  "@invariant": "collapse_geometry_is_semantic",
+
+  "collapse_geometry": {
+    "type": "enum",
+    "required": true,
+    "values": [
+      "path_tree",
+      "rotation",
+      "lattice",
+      "modular"
+    ]
+  },
+
+  "geometry_properties": {
+    "path_tree": {
+      "space": "discrete",
+      "associative": true,
+      "locality": "strong",
+      "merge": "pairwise",
+      "projection": "scalar_limit"
+    },
+    "rotation": {
+      "space": "SO(2)",
+      "associative": true,
+      "locality": "medium",
+      "merge": "linear_combination",
+      "projection": "angle_normalization"
+    },
+    "lattice": {
+      "space": "Q^n",
+      "associative": false,
+      "locality": "global",
+      "merge": "short_vector",
+      "projection": "identity_cancellation"
+    },
+    "modular": {
+      "space": "elliptic_modular",
+      "associative": true,
+      "locality": "none",
+      "merge": "hypergeometric",
+      "projection": "analytic_scalar"
+    }
+  }
+}
