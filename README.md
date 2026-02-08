@@ -5,6 +5,99 @@
 Reference material for the SCXQ7/SMCA stack, including specs, examples, and
 supporting notes.
 
+## Phases & Current Accomplishments
+
+| Phase | Status | Accomplishments |
+| --- | --- | --- |
+| Phase 0 — Foundations | ✅ Complete | SCXQ2 microcode concepts, SMCA/1 stack framing, and symbolic compression framing locked in. |
+| Phase 1 — Sovereignty Law | ✅ Complete | SCO/1 class definition, SCXQ7 kernel freeze (hash + size), and conformance vectors defined. |
+| Phase 2 — Reference Implementation | ✅ Complete | SMCA-REF-1 verifier, deterministic vectors, and compliance artifacts published in-repo. |
+| Phase 3 — Execution Architecture | ✅ Complete | SCXQ7 object server syntax, execution engine flow, and runtime invariants documented. |
+| Phase 4 — Interop & Adapters | ✅ Complete | π-Adapter canonical signal shape + adapter matrix for GGUF/ONNX/WebGPU/WASM. |
+| Phase 5 — Operationalization | 🔧 In Progress | Expand tooling, multi-domain exemplars, and automation around verification + registry. |
+
+## TODO
+
+- Expand runnable examples across additional domains (healthcare, robotics, IoT, and security).
+- Add end-to-end build/run scripts for the SMCA-REF-1 verifier pipeline.
+- Publish reference SCO/1 `.s7` artifacts for non-financial domains.
+- Document host integration patterns for object server deployments at scale.
+- Add conformance regression harness and sample CI configuration.
+
+## Capabilities by Application & Domain
+
+SCXQ7/SMCA is designed as a sovereign execution substrate for **executable data objects**, with formal legality and deterministic verification. The following summarizes **what the stack can do** across known applications and domains, based on the specs and reference artifacts in this repository.
+
+### Core System Capabilities (All Domains)
+
+- **Deterministic legality checks** using SCO/1 verifier vectors (PASS/FAIL only).
+- **Executable data objects** that include data, execution methods, and configuration in a single `.s7` file.
+- **Compression-native execution** where μ-ops run on symbolic/compressed state without mandatory decompression.
+- **Causal integrity and replay** via traceable inference and kernel-law enforcement.
+- **Host powerlessness**: projections (HTTP/WS/etc) cannot extend authority or mutate kernel law.
+
+### AI/ML + LLM Governance
+
+- **Proposal–Execution split**: LLMs propose, SCXQ7 executes/commits.
+- **Adapter normalization** via π-Adapter into geometry signals (angles/magnitudes/paths).
+- **Model-agnostic ingestion** across GGUF, ONNX, WebGPU, and WASM sources.
+- **Deterministic inference traces** (SCXQ2-TRACE/1) for auditable reasoning flows.
+
+### Finance, Risk, and Compliance
+
+- **Executable financial objects** with embedded calculations, constraints, and anomaly triggers.
+- **Deterministic audit trails** for margin, profitability, and risk inference logic.
+- **Compliance gating** using conformance vectors + kernel integrity checks.
+- **Immutable compliance artifacts** (registry entries, badges, manifests).
+
+### Infrastructure & DevOps
+
+- **Self-contained service bundles**: object server configuration + logic + data in one file.
+- **Deterministic rollout verification** by running SCO/1 vectors on deployed artifacts.
+- **Immutable kernel enforcement** to prevent runtime drift or unauthorized extensions.
+
+### Data Systems & Analytics
+
+- **Compression-first analytics**: streamable, compact symbolic computation.
+- **Composable execution methods** built from SCXQ2 μ-ops.
+- **Replayable analytics** using deterministic traces and stable execution contexts.
+
+### Scientific & Mathematical Computing
+
+- **Domain-scoped execution contexts** (π/λ/∇/∑) for math, functional, optimization, and streaming tasks.
+- **Deterministic calculation pipelines** that are executable inside `.s7` objects.
+- **Stable numerical provenance** via canonical geometry signals and trace logs.
+
+### Security, Policy, and Governance
+
+- **Lawful execution boundary**: kernel law prevents unauthorized behavior.
+- **Explicit persistence rules** to prevent illegal state mutation.
+- **Verification-first security**: fail fast on kernel hash or symbol closure violations.
+
+### Edge, IoT, and Embedded Systems
+
+- **Small, deterministic execution units** suitable for constrained runtimes.
+- **WASM projection** for sandboxed verification without granting authority.
+- **Immutable behavior profiles** through kernel freeze + vectorized verification.
+
+### Knowledge Systems & Semantic Retrieval
+
+- **Geometry-first semantic representation** via π-GCCP and SVG-tensor bindings.
+- **Stable retrieval behavior** independent of model origin or hardware.
+- **Symbolic, compressible state** for long-lived, replayable knowledge objects.
+
+### Simulation & Digital Twins
+
+- **Executable object servers** modeling systems with embedded methods + constraints.
+- **Deterministic replay** for causal simulation and auditing.
+- **Bounded learning objects** (SCO-LEARN/1) for sealed, lawful adaptation.
+
+### Interoperability & Integration
+
+- **Canonical signal shapes** ensure adapters do not leak model-specific metadata upstream.
+- **Projection-only hosts** allow HTTP/WS endpoints without expanding authority.
+- **Registry + manifest artifacts** to standardize distribution and compliance reporting.
+
 ## SMCA-REF-1 Reference Implementation
 
 This repository now includes the **SMCA-REF-1** reference implementation for
