@@ -1,0 +1,53 @@
+{
+  "@registry": "collapse-geometry",
+  "@version": "1.0.0",
+  "@authority": "SMCA/1",
+  "@frozen": true,
+
+  "geometries": {
+
+    "path_tree": {
+      "description": "Discrete associative tree collapse",
+      "allowed_kernels": [
+        "binary_split",
+        "interval_fold"
+      ],
+      "cm1_profile": "balanced_scope_single_collapse",
+      "associative": true,
+      "locality": "strong"
+    },
+
+    "rotation": {
+      "description": "SO(2) rotational cancellation",
+      "allowed_kernels": [
+        "linear_series_sum",
+        "angle_reduce"
+      ],
+      "cm1_profile": "linear_sequence",
+      "associative": true,
+      "locality": "medium"
+    },
+
+    "lattice": {
+      "description": "Integer relation collapse in Q^n",
+      "allowed_kernels": [
+        "pslq_search",
+        "lll_reduce"
+      ],
+      "cm1_profile": "global_constraint",
+      "associative": false,
+      "locality": "global"
+    },
+
+    "modular": {
+      "description": "Elliptic / modular hypergeometric collapse",
+      "allowed_kernels": [
+        "chudnovsky_eval",
+        "hypergeom_fold"
+      ],
+      "cm1_profile": "single_interval_deep",
+      "associative": true,
+      "locality": "none"
+    }
+  }
+}

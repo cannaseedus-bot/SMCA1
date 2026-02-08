@@ -1,0 +1,49 @@
+{
+  "@suite": "collapse-geometry-v1",
+  "@authority": "SMCA/1",
+
+  "tests": [
+
+    {
+      "name": "valid_binary_split",
+      "geometry": "path_tree",
+      "cm1": [1,2,14,30,15,14,30,15,3,4],
+      "expect": "ACCEPT"
+    },
+
+    {
+      "name": "unbalanced_scope",
+      "geometry": "path_tree",
+      "cm1": [1,2,14,30,3,4],
+      "expect": "REJECT"
+    },
+
+    {
+      "name": "early_collapse",
+      "geometry": "path_tree",
+      "cm1": [1,2,4],
+      "expect": "REJECT"
+    },
+
+    {
+      "name": "extra_after_collapse",
+      "geometry": "path_tree",
+      "cm1": [1,2,14,15,3,4,30],
+      "expect": "REJECT"
+    },
+
+    {
+      "name": "illegal_escape",
+      "geometry": "path_tree",
+      "cm1": [1,2,27,3,4],
+      "expect": "REJECT"
+    },
+
+    {
+      "name": "wrong_geometry_kernel",
+      "geometry": "rotation",
+      "kernel": "binary_split",
+      "expect": "REJECT"
+    }
+  ]
+}
