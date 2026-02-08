@@ -268,3 +268,85 @@ That is why it appears in π, ζ(3), modular forms, and hypergeometric series.
 2. **Binary splitting is the canonical SCXQ7 microkernel for collapsing associative structure.**
 
 Everything else is *which geometry you feed into the same machine*.
+
+---
+
+## III. Binary splitting vs. arctan formulas (computational DNA)
+
+The contrast between the central-binomial series and Machin/Arndt formulas is not
+just convergence speed. It is a **difference in collapse geometry** and, therefore,
+a difference in **thinking style** and computational DNA.
+
+### 1) Series vs. arctan: what collapses
+
+**Central-binomial series**
+
+\[
+\sum_{k=1}^\infty k \cdot \frac{2^k}{\binom{2k}{k}} = \pi + 3
+\]
+
+- **Collapse geometry**: combinatorial path/tree collapse.
+- **Execution**: integer-only terms + one final division.
+- **Thinking style**: symmetry-driven emergence of π.
+
+**Machin-style arctan formulas**
+
+\[
+\frac{\pi}{4} = \sum_i a_i \arctan(1/p_i)
+\]
+
+- **Collapse geometry**: rotation cancellation in SO(2).
+- **Execution**: multiple arctan series, linearly combined.
+- **Thinking style**: analytic decomposition via angle identities.
+
+**Arndt / PSLQ formulas**
+
+- **Collapse geometry**: integer-relation lattice collapse.
+- **Execution**: integer-relation discovery + high-precision arctan series.
+- **Thinking style**: algorithmic search for short lattice vectors.
+
+---
+
+### 2) Why Arndt-style formulas exist
+
+Machin’s formula is human-discovered. Arndt-style formulas are computer-discovered
+via **integer relation algorithms** (PSLQ / LLL). The search space is a rational
+lattice of arctan values; short vectors produce cancellations that force the
+imaginary part of
+\[
+\prod_i (p_i + i)^{a_i}
+\]
+to vanish, yielding a π identity. This is a **paradigm shift**: formula discovery
+becomes lattice search rather than manual construction.
+
+---
+
+### 3) Computational cost sketch
+
+Approximate terms needed for 1000 digits (indicative scale):
+
+| Formula Type | Terms | Notes |
+| ------------ | ----- | ----- |
+| Central-binomial series | ~1000 | ratio → 1/2, linear term growth |
+| Machin-style | ~140 | arctan(1/5) dominates |
+| Arndt 11-term | ~15 | large denominators, very fast convergence |
+| Chudnovsky | ~72 | ~14 digits per term |
+
+The high-level insight is structural: **better collapse geometry means higher
+compression per term**, reducing the number of terms needed.
+
+---
+
+### 4) Thinking-style spectrum (collapse geometry → cognition)
+
+1. **Combinatorial collapse** (central binomial series)
+   - π as emergent symmetry in discrete paths.
+2. **Rotation collapse** (Machin)
+   - π as generator of rotational closure.
+3. **Lattice collapse** (Arndt / PSLQ)
+   - π as a short integer relation.
+4. **Modular collapse** (Chudnovsky)
+   - π as shadow of modular/elliptic symmetry.
+
+The computational DNA mirrors mathematical depth: the more symmetry collapsed per
+step, the more compact the computation.
